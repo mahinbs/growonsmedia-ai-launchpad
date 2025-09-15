@@ -19,7 +19,7 @@ const Header = () => {
             <img 
               src={logo} 
               alt="GrowonsmediaAI" 
-              className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto transition-all duration-300 hover:scale-105 drop-shadow-lg hover:drop-shadow-xl"
+              className="h-12 sm:h-14 md:h-16 lg:h-18 w-auto transition-all duration-300 hover:scale-105 drop-shadow-lg hover:drop-shadow-xl"
             />
           </Link>
           
