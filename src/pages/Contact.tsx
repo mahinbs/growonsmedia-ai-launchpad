@@ -268,7 +268,7 @@ const Contact = () => {
               </Button>
               <Button 
                 variant="outline" 
-                className="text-base px-8 py-4 border-white text-white hover:bg-white hover:text-ai-primary"
+                className="text-base px-8 py-4 border-white text-white hover:bg-white hover:text-ai-primary [&_svg]:text-white hover:[&_svg]:text-ai-primary"
                 onClick={handleEmailClick}
               >
                 <Mail className="mr-2 h-5 w-5" />
