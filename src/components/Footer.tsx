@@ -38,7 +38,7 @@ const Footer = () => {
             <img 
               src={logo} 
               alt="GrowonsmediaAI" 
-              className="h-12 md:h-14 w-auto mb-4 drop-shadow-lg"
+              className="h-16 md:h-20 lg:h-24 w-auto mb-4 drop-shadow-2xl hover:drop-shadow-[0_0_30px_rgba(59,130,246,0.3)] transition-all duration-300"
             />
             <p className="text-background/70 mb-6 max-w-md">
               Transform your business into AI-first with our cutting-edge solutions. 

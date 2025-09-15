@@ -58,7 +58,7 @@ const MobileMenu = ({ onContactClick }: MobileMenuProps) => {
             <img 
               src={logo} 
               alt="GrowonsmediaAI" 
-              className="h-10 md:h-12 w-auto drop-shadow-sm"
+              className="h-12 md:h-16 w-auto drop-shadow-lg transition-all duration-300"
             />
             <button
               onClick={toggleMenu}
