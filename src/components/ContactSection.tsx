@@ -87,25 +87,25 @@ const ContactSection = () => {
   }, []);
 
   return (
-    <section id="contact" className="py-24">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16 fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+    <section id="contact" className="py-12 sm:py-16 lg:py-24">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-12 sm:mb-16 fade-in">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 px-4">
             Ready to <span className="gradient-text">Launch Your Vision</span>?
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
             Transform your business with AI-powered solutions. Get in touch with our experts 
             and start your journey to AI-first success.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
           {/* Contact Form */}
           <div className="service-card">
-            <h3 className="text-2xl font-bold mb-6">Get Your Free AI Consultation</h3>
+            <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Get Your Free AI Consultation</h3>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="name">Full Name *</Label>
                   <Input
@@ -129,7 +129,7 @@ const ContactSection = () => {
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="phone">Phone Number</Label>
                   <Input
@@ -150,7 +150,7 @@ const ContactSection = () => {
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="service">Service Interested In</Label>
                   <Select value={formData.service} onValueChange={(value) => handleInputChange("service", value)}>
@@ -223,18 +223,18 @@ const ContactSection = () => {
           </div>
 
           {/* Contact Information */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             <div className="service-card">
-              <h3 className="text-2xl font-bold mb-6">Get in Touch</h3>
+              <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Get in Touch</h3>
               
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-ai-glow rounded-full flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-ai-primary" />
+              <div className="space-y-4 sm:space-y-6">
+                <div className="flex items-start space-x-3 sm:space-x-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-ai-glow rounded-full flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-ai-primary" />
                   </div>
-                  <div>
-                    <h4 className="font-semibold mb-1">Email Us</h4>
-                    <a href="mailto:contact@growonsmedia.ai" className="text-muted-foreground hover:text-ai-primary transition-colors">
+                  <div className="min-w-0 flex-1">
+                    <h4 className="text-sm sm:text-base font-semibold mb-1">Email Us</h4>
+                    <a href="mailto:contact@growonsmedia.ai" className="text-sm sm:text-base text-muted-foreground hover:text-ai-primary transition-colors break-all">
                       contact@growonsmedia.ai
                     </a>
                   </div>

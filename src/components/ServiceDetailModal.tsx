@@ -22,59 +22,59 @@ const ServiceDetailModal = ({ service, isOpen, onClose, onGetQuote }: ServiceDet
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-        <DialogHeader className="relative">
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto mx-2 sm:mx-4">
+        <DialogHeader className="relative pb-4">
           <Button
             variant="ghost"
             size="icon"
-            className="absolute -top-2 -right-2"
+            className="absolute -top-2 -right-2 z-10"
             onClick={onClose}
           >
             <X className="h-4 w-4" />
           </Button>
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-16 h-16 bg-ai-glow rounded-2xl flex items-center justify-center">
-              <service.icon className="w-8 h-8 text-ai-primary" />
+          <div className="flex items-center gap-3 sm:gap-4 mb-4 pr-10">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-ai-glow rounded-2xl flex items-center justify-center flex-shrink-0">
+              <service.icon className="w-6 h-6 sm:w-8 sm:h-8 text-ai-primary" />
             </div>
-            <div>
-              <DialogTitle className="text-2xl font-bold">{service.title}</DialogTitle>
-              <p className="text-muted-foreground">{service.description}</p>
+            <div className="min-w-0 flex-1">
+              <DialogTitle className="text-lg sm:text-2xl font-bold break-words">{service.title}</DialogTitle>
+              <p className="text-sm sm:text-base text-muted-foreground break-words">{service.description}</p>
             </div>
           </div>
         </DialogHeader>
 
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           {/* Quick Info Cards */}
-          <div className="grid md:grid-cols-3 gap-4">
-            <div className="bg-muted/50 p-4 rounded-lg text-center">
-              <Clock className="w-6 h-6 text-ai-primary mx-auto mb-2" />
-              <p className="text-sm text-muted-foreground">Timeline</p>
-              <p className="font-semibold">{service.timeline}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+            <div className="bg-muted/50 p-3 sm:p-4 rounded-lg text-center">
+              <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-ai-primary mx-auto mb-2" />
+              <p className="text-xs sm:text-sm text-muted-foreground">Timeline</p>
+              <p className="text-sm sm:text-base font-semibold">{service.timeline}</p>
             </div>
-            <div className="bg-muted/50 p-4 rounded-lg text-center">
-              <DollarSign className="w-6 h-6 text-ai-primary mx-auto mb-2" />
-              <p className="text-sm text-muted-foreground">Starting From</p>
-              <p className="font-semibold">{service.startingPrice}</p>
+            <div className="bg-muted/50 p-3 sm:p-4 rounded-lg text-center">
+              <DollarSign className="w-5 h-5 sm:w-6 sm:h-6 text-ai-primary mx-auto mb-2" />
+              <p className="text-xs sm:text-sm text-muted-foreground">Starting From</p>
+              <p className="text-sm sm:text-base font-semibold">{service.startingPrice}</p>
             </div>
-            <div className="bg-muted/50 p-4 rounded-lg text-center">
-              <CheckCircle className="w-6 h-6 text-ai-primary mx-auto mb-2" />
-              <p className="text-sm text-muted-foreground">Deliverables</p>
-              <p className="font-semibold">{service.deliverables.length} Items</p>
+            <div className="bg-muted/50 p-3 sm:p-4 rounded-lg text-center">
+              <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-ai-primary mx-auto mb-2" />
+              <p className="text-xs sm:text-sm text-muted-foreground">Deliverables</p>
+              <p className="text-sm sm:text-base font-semibold">{service.deliverables.length} Items</p>
             </div>
           </div>
 
           {/* Detailed Description */}
           <div>
-            <h3 className="text-xl font-bold mb-3">Overview</h3>
-            <p className="text-muted-foreground leading-relaxed">{service.detailedDescription}</p>
+            <h3 className="text-lg sm:text-xl font-bold mb-3">Overview</h3>
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{service.detailedDescription}</p>
           </div>
 
           {/* Technologies */}
           <div>
-            <h3 className="text-xl font-bold mb-3">Technologies We Use</h3>
+            <h3 className="text-lg sm:text-xl font-bold mb-3">Technologies We Use</h3>
             <div className="flex flex-wrap gap-2">
               {service.technologies.map((tech, index) => (
-                <Badge key={index} variant="secondary" className="bg-ai-primary/10 text-ai-primary">
+                <Badge key={index} variant="secondary" className="bg-ai-primary/10 text-ai-primary text-xs sm:text-sm">
                   {tech}
                 </Badge>
               ))}
@@ -142,15 +142,18 @@ const ServiceDetailModal = ({ service, isOpen, onClose, onGetQuote }: ServiceDet
 
           {/* Call to Action */}
           <div className="text-center space-y-4">
-            <h3 className="text-xl font-bold">Ready to Get Started?</h3>
-            <p className="text-muted-foreground">
+            <h3 className="text-lg sm:text-xl font-bold">Ready to Get Started?</h3>
+            <p className="text-sm sm:text-base text-muted-foreground">
               Let's discuss your project and provide you with a customized solution.
             </p>
-            <div className="flex gap-4 justify-center">
-              <Button variant="outline" onClick={onClose}>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+              <Button variant="outline" onClick={onClose} className="w-full sm:w-auto">
                 Close
               </Button>
-              <Button className="bg-ai-primary hover:bg-ai-secondary" onClick={handleGetQuote}>
+              <Button 
+                className="bg-ai-primary hover:bg-ai-secondary w-full sm:w-auto" 
+                onClick={handleGetQuote}
+              >
                 Get Free Consultation
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
