@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import heroImage from "@/assets/hero-ai-illustration.jpg";
-import { openWhatsApp, getFormattedWhatsAppNumber } from "@/lib/whatsapp";
-import { CONTACT_INFO } from "@/config/contact";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section id="hero" className="min-h-screen flex items-center bg-gradient-hero pt-24 sm:pt-28 md:pt-32 lg:pt-36">
       <div className="container mx-auto px-6">
@@ -32,7 +33,7 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 className="btn-hero group"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => navigate('/contact')}
               >
                 Launch Your Vision
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -41,26 +42,10 @@ const HeroSection = () => {
               <Button 
                 variant="outline" 
                 className="btn-outline-hero"
-                onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => navigate('/services')}
               >
                 Explore Services
               </Button>
-            </div>
-
-            {/* Quick Contact */}
-            <div className="flex items-center space-x-6 pt-4">
-              <button
-                onClick={() => openWhatsApp("Hi! I'm interested in your AI services. Can you help me?")}
-                className="text-sm text-muted-foreground hover:text-ai-primary transition-colors cursor-pointer"
-              >
-                WhatsApp: {getFormattedWhatsAppNumber()}
-              </button>
-              <a 
-                href={`mailto:${CONTACT_INFO.email}`} 
-                className="text-sm text-muted-foreground hover:text-ai-primary transition-colors"
-              >
-                {CONTACT_INFO.email}
-              </a>
             </div>
           </div>
 
