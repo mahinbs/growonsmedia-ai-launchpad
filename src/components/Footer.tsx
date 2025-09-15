@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram, Facebook } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -34,7 +35,11 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <h3 className="text-2xl font-bold mb-4 gradient-text">Growonsmedia</h3>
+            <img 
+              src={logo} 
+              alt="Growonsmedia" 
+              className="h-10 w-auto mb-4 filter brightness-0 invert"
+            />
             <p className="text-background/70 mb-6 max-w-md">
               Transform your business into AI-first with our cutting-edge solutions. 
               We help companies launch their vision with AI-powered innovation.

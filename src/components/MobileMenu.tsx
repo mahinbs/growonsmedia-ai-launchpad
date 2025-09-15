@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X, Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 
 interface MobileMenuProps {
   onContactClick: () => void;
@@ -54,7 +55,11 @@ const MobileMenu = ({ onContactClick }: MobileMenuProps) => {
         <div className="flex flex-col h-full">
           {/* Header */}
           <div className="flex items-center justify-between p-6 border-b border-border">
-            <h2 className="text-xl font-bold gradient-text">Growonsmedia</h2>
+            <img 
+              src={logo} 
+              alt="Growonsmedia" 
+              className="h-8 w-auto"
+            />
             <button
               onClick={toggleMenu}
               className="p-2 rounded-md hover:bg-muted transition-colors"
