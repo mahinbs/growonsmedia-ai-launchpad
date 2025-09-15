@@ -91,23 +91,23 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-12 sm:py-16 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="text-center mb-12 sm:mb-16 fade-in">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 px-4">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16 fade-in">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 px-4 leading-tight">
             Ready to <span className="gradient-text">Launch Your Vision</span>?
           </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto px-4 leading-relaxed">
             Transform your business with AI-powered solutions. Get in touch with our experts 
             and start your journey to AI-first success.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
           {/* Contact Form */}
           <div className="service-card">
-            <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Get Your Free AI Consultation</h3>
+            <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-4 sm:mb-6">Get Your Free AI Consultation</h3>
             
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <Label htmlFor="name">Full Name *</Label>
                   <Input
@@ -131,32 +131,34 @@ const ContactSection = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <Label htmlFor="phone">Phone Number</Label>
+                  <Label htmlFor="phone" className="text-sm font-medium">Phone Number</Label>
                   <Input
                     id="phone"
                     value={formData.phone}
                     onChange={(e) => handleInputChange("phone", e.target.value)}
                     placeholder="+1 (555) 000-0000"
+                    className="min-h-[48px]"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="company">Company Name</Label>
+                  <Label htmlFor="company" className="text-sm font-medium">Company Name</Label>
                   <Input
                     id="company"
                     value={formData.company}
                     onChange={(e) => handleInputChange("company", e.target.value)}
                     placeholder="Your Company"
+                    className="min-h-[48px]"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <Label htmlFor="service">Service Interested In</Label>
+                  <Label htmlFor="service" className="text-sm font-medium">Service Interested In</Label>
                   <Select value={formData.service} onValueChange={(value) => handleInputChange("service", value)}>
-                    <SelectTrigger>
+                    <SelectTrigger className="min-h-[48px]">
                       <SelectValue placeholder="Select a service" />
                     </SelectTrigger>
                     <SelectContent>
@@ -179,9 +181,9 @@ const ContactSection = () => {
                   </Select>
                 </div>
                 <div>
-                  <Label htmlFor="budget">Project Budget</Label>
+                  <Label htmlFor="budget" className="text-sm font-medium">Project Budget</Label>
                   <Select value={formData.budget} onValueChange={(value) => handleInputChange("budget", value)}>
-                    <SelectTrigger>
+                    <SelectTrigger className="min-h-[48px]">
                       <SelectValue placeholder="Select budget range" />
                     </SelectTrigger>
                     <SelectContent>
@@ -196,7 +198,7 @@ const ContactSection = () => {
               </div>
 
               <div>
-                <Label htmlFor="message">Project Details *</Label>
+                <Label htmlFor="message" className="text-sm font-medium">Project Details *</Label>
                 <Textarea
                   id="message"
                   value={formData.message}
@@ -204,12 +206,13 @@ const ContactSection = () => {
                   placeholder="Tell us about your project, goals, and how we can help transform your business with AI..."
                   rows={4}
                   required
+                  className="min-h-[120px] resize-y"
                 />
               </div>
 
               <Button 
                 type="submit" 
-                className="btn-hero w-full"
+                className="btn-hero w-full min-h-[52px]"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
@@ -225,9 +228,9 @@ const ContactSection = () => {
           </div>
 
           {/* Contact Information */}
-          <div className="space-y-6 sm:space-y-8">
+          <div className="space-y-4 sm:space-y-6 lg:space-y-8">
             <div className="service-card">
-              <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Get in Touch</h3>
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-4 sm:mb-6">Get in Touch</h3>
               
               <div className="space-y-4 sm:space-y-6">
                 <div className="flex items-start space-x-3 sm:space-x-4">
@@ -287,12 +290,12 @@ const ContactSection = () => {
             </div>
 
             <div className="service-card text-center bg-gradient-primary text-white">
-              <h3 className="text-xl font-bold mb-4">Need Immediate Help?</h3>
-              <p className="mb-6 opacity-90">
+              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Need Immediate Help?</h3>
+              <p className="mb-4 sm:mb-6 opacity-90 text-sm sm:text-base">
                 Our AI experts are standing by to discuss your project and provide immediate guidance.
               </p>
               <Button 
-                className="bg-white text-ai-primary hover:bg-white/90"
+                className="bg-white text-ai-primary hover:bg-white/90 w-full sm:w-auto min-h-[48px]"
                 onClick={() => openWhatsApp("Hi! I need immediate help with my AI project. Are you available to chat?")}
               >
                 Chat on WhatsApp

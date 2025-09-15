@@ -25,7 +25,7 @@ const MobileMenu = () => {
       {/* Mobile Menu Button */}
       <button
         onClick={toggleMenu}
-        className="lg:hidden p-2 rounded-md hover:bg-muted transition-colors z-50 relative"
+        className="lg:hidden p-3 rounded-md hover:bg-muted transition-colors z-50 relative min-h-[48px] min-w-[48px] flex items-center justify-center touch-manipulation"
         aria-label="Toggle mobile menu"
       >
         {isOpen ? (
@@ -45,21 +45,21 @@ const MobileMenu = () => {
 
       {/* Mobile Menu Slide Panel */}
       <div className={`
-        fixed top-0 right-0 h-full w-80 max-w-[90vw] bg-card border-l border-border z-[70] lg:hidden
-        transform transition-transform duration-300 ease-out
+        fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-card border-l border-border z-[70] lg:hidden
+        transform transition-transform duration-300 ease-out overflow-y-auto
         ${isOpen ? 'translate-x-0' : 'translate-x-full'}
       `}>
         <div className="flex flex-col h-full">
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b border-border">
+          <div className="flex items-center justify-between p-4 sm:p-6 border-b border-border">
             <img 
               src={logo} 
               alt="GrowonsmediaAI" 
-              className="h-12 md:h-16 w-auto drop-shadow-lg transition-all duration-300"
+              className="h-10 sm:h-12 md:h-16 w-auto drop-shadow-lg transition-all duration-300"
             />
             <button
               onClick={toggleMenu}
-              className="p-2 rounded-md hover:bg-muted transition-colors"
+              className="p-2 rounded-md hover:bg-muted transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center touch-manipulation"
               aria-label="Close menu"
             >
               <X className="w-5 h-5" />
@@ -67,60 +67,60 @@ const MobileMenu = () => {
           </div>
 
           {/* Navigation Links */}
-          <nav className="flex-1 px-6 py-8">
-            <div className="space-y-6">
+          <nav className="flex-1 px-4 sm:px-6 py-6 sm:py-8">
+            <div className="space-y-4 sm:space-y-6">
               <Link
                 to="/"
                 onClick={handleNavClick}
-                className={`block w-full text-left text-lg font-medium hover:text-ai-primary transition-colors py-2 ${isActive('/') ? 'text-ai-primary font-semibold' : 'text-foreground'}`}
+                className={`block w-full text-left text-lg font-medium hover:text-ai-primary transition-colors py-3 px-2 rounded-lg min-h-[48px] flex items-center touch-manipulation ${isActive('/') ? 'text-ai-primary font-semibold bg-ai-primary/10' : 'text-foreground'}`}
               >
                 Home
               </Link>
               <Link
                 to="/ai-journey"
                 onClick={handleNavClick}
-                className={`block w-full text-left text-lg font-medium hover:text-ai-primary transition-colors py-2 ${isActive('/ai-journey') ? 'text-ai-primary font-semibold' : 'text-foreground'}`}
+                className={`block w-full text-left text-lg font-medium hover:text-ai-primary transition-colors py-3 px-2 rounded-lg min-h-[48px] flex items-center touch-manipulation ${isActive('/ai-journey') ? 'text-ai-primary font-semibold bg-ai-primary/10' : 'text-foreground'}`}
               >
                 AI Journey
               </Link>
               <Link
                 to="/services"
                 onClick={handleNavClick}
-                className={`block w-full text-left text-lg font-medium hover:text-ai-primary transition-colors py-2 ${isActive('/services') ? 'text-ai-primary font-semibold' : 'text-foreground'}`}
+                className={`block w-full text-left text-lg font-medium hover:text-ai-primary transition-colors py-3 px-2 rounded-lg min-h-[48px] flex items-center touch-manipulation ${isActive('/services') ? 'text-ai-primary font-semibold bg-ai-primary/10' : 'text-foreground'}`}
               >
                 Services
               </Link>
               <Link
                 to="/about"
                 onClick={handleNavClick}
-                className={`block w-full text-left text-lg font-medium hover:text-ai-primary transition-colors py-2 ${isActive('/about') ? 'text-ai-primary font-semibold' : 'text-foreground'}`}
+                className={`block w-full text-left text-lg font-medium hover:text-ai-primary transition-colors py-3 px-2 rounded-lg min-h-[48px] flex items-center touch-manipulation ${isActive('/about') ? 'text-ai-primary font-semibold bg-ai-primary/10' : 'text-foreground'}`}
               >
                 About
               </Link>
               <Link
                 to="/contact"
                 onClick={handleNavClick}
-                className={`block w-full text-left text-lg font-medium hover:text-ai-primary transition-colors py-2 ${isActive('/contact') ? 'text-ai-primary font-semibold' : 'text-foreground'}`}
+                className={`block w-full text-left text-lg font-medium hover:text-ai-primary transition-colors py-3 px-2 rounded-lg min-h-[48px] flex items-center touch-manipulation ${isActive('/contact') ? 'text-ai-primary font-semibold bg-ai-primary/10' : 'text-foreground'}`}
               >
                 Contact
               </Link>
             </div>
 
             {/* Contact Info */}
-            <div className="mt-12 pt-8 border-t border-border space-y-4">
-              <div className="text-sm text-muted-foreground mb-4">Get in touch</div>
+            <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-border space-y-3 sm:space-y-4">
+              <div className="text-sm text-muted-foreground mb-3 sm:mb-4">Get in touch</div>
               <a 
                 href={`mailto:${CONTACT_INFO.email}`}
-                className="flex items-center space-x-3 text-sm hover:text-ai-primary transition-colors"
+                className="flex items-center space-x-3 text-sm hover:text-ai-primary transition-colors py-2 px-2 rounded-lg min-h-[44px] touch-manipulation"
               >
-                <Mail className="w-4 h-4" />
-                <span>{CONTACT_INFO.email}</span>
+                <Mail className="w-4 h-4 flex-shrink-0" />
+                <span className="break-all">{CONTACT_INFO.email}</span>
               </a>
               <button
                 onClick={() => openWhatsApp("Hi! I'm interested in your AI services from mobile.")}
-                className="flex items-center space-x-3 text-sm hover:text-ai-primary transition-colors cursor-pointer w-full text-left"
+                className="flex items-center space-x-3 text-sm hover:text-ai-primary transition-colors cursor-pointer w-full text-left py-2 px-2 rounded-lg min-h-[44px] touch-manipulation"
               >
-                <Phone className="w-4 h-4" />
+                <Phone className="w-4 h-4 flex-shrink-0" />
                 <span>{getFormattedWhatsAppNumber()}</span>
               </button>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
@@ -131,9 +131,9 @@ const MobileMenu = () => {
           </nav>
 
           {/* CTA Button */}
-          <div className="p-6 border-t border-border">
+          <div className="p-4 sm:p-6 border-t border-border">
             <Link to="/contact" onClick={handleNavClick}>
-              <Button className="w-full btn-hero">
+              <Button className="w-full btn-hero min-h-[52px]">
                 Launch Your Vision
               </Button>
             </Link>

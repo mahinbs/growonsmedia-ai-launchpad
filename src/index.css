@@ -132,26 +132,53 @@
 
   body {
     @apply bg-background text-foreground font-inter antialiased;
+    /* Optimize mobile scrolling */
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
   
   html {
     scroll-behavior: smooth;
   }
+  
+  /* Mobile-first touch optimizations */
+  button, input, select, textarea, a {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Improved mobile text rendering */
+  @media (max-width: 768px) {
+    body {
+      font-size: 16px; /* Prevent zoom on iOS */
+      line-height: 1.6;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      line-height: 1.3;
+      text-wrap: balance;
+    }
+    
+    p, li {
+      line-height: 1.6;
+      text-wrap: pretty;
+    }
+  }
 }
 
 @layer components {
-  /* Hero Button Variants */
+  /* Hero Button Variants - Mobile optimized */
   .btn-hero {
-    @apply bg-gradient-to-r from-ai-primary to-ai-secondary text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-glow hover:scale-105;
+    @apply bg-gradient-to-r from-ai-primary to-ai-secondary text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 hover:shadow-glow hover:scale-105 min-h-[48px] flex items-center justify-center;
   }
   
   .btn-outline-hero {
-    @apply border-2 border-ai-primary text-ai-primary px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-ai-primary hover:text-white;
+    @apply border-2 border-ai-primary text-ai-primary px-6 py-3 sm:px-8 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 hover:bg-ai-primary hover:text-white min-h-[48px] flex items-center justify-center;
   }
   
-  /* Service Cards */
+  /* Service Cards - Mobile optimized */
   .service-card {
-    @apply bg-card border border-card-border rounded-2xl p-8 transition-all duration-300 hover:shadow-soft hover:-translate-y-2;
+    @apply bg-card border border-card-border rounded-2xl p-4 sm:p-6 lg:p-8 transition-all duration-300 hover:shadow-soft hover:-translate-y-2 touch-manipulation;
   }
   
   /* AI Glow Effects */
@@ -241,7 +268,7 @@
     }
   }
   
-  /* Stagger Animation Delays */
+  /* Stagger Animation Delays - Mobile optimized */
   .fade-in-delay-1 {
     animation: fadeIn 0.8s ease-out 0.1s both;
   }
@@ -252,5 +279,49 @@
   
   .fade-in-delay-3 {
     animation: fadeIn 0.8s ease-out 0.3s both;
+  }
+  
+  /* Mobile-specific optimizations */
+  @media (max-width: 768px) {
+    .fade-in, .fade-in-delay-1, .fade-in-delay-2, .fade-in-delay-3 {
+      animation-duration: 0.6s; /* Faster animations on mobile */
+    }
+    
+    /* Better touch targets */
+    .service-card {
+      @apply min-h-[120px];
+    }
+    
+    .btn-hero, .btn-outline-hero {
+      @apply min-h-[52px] text-base;
+    }
+    
+    /* Mobile typography improvements */
+    h1 {
+      @apply text-2xl sm:text-3xl;
+    }
+    
+    h2 {
+      @apply text-xl sm:text-2xl;
+    }
+    
+    h3 {
+      @apply text-lg sm:text-xl;
+    }
+    
+    /* Better spacing for mobile */
+    .container {
+      @apply px-4 sm:px-6;
+    }
+    
+    /* Improved mobile form elements */
+    input, select, textarea {
+      @apply min-h-[48px] text-base;
+    }
+    
+    /* Touch-friendly social links */
+    a[aria-label] {
+      @apply min-w-[44px] min-h-[44px] flex items-center justify-center;
+    }
   }
 }

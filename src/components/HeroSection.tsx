@@ -18,30 +18,30 @@ const HeroSection = () => {
                 <span className="text-sm font-medium uppercase tracking-wider">AI-Powered Innovation</span>
               </div>
               
-              <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 We are{" "}
                 <span className="gradient-text">Growonsmedia</span>
                 <br />
-                <span className="text-ai-primary">AI Marketing • Education • Development</span>
+                <span className="text-ai-primary text-lg sm:text-xl md:text-2xl lg:text-3xl">AI Marketing • Education • Development</span>
               </h1>
               
-              <p className="text-xl text-muted-foreground max-w-lg">
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-lg leading-relaxed">
                 Transform your business into AI-first with us. Launch Your Vision with cutting-edge AI solutions that drive growth and innovation.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
               <Button 
-                className="btn-hero group"
+                className="btn-hero group w-full sm:w-auto"
                 onClick={() => navigate('/contact')}
               >
                 Launch Your Vision
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
               
               <Button 
                 variant="outline" 
-                className="btn-outline-hero"
+                className="btn-outline-hero w-full sm:w-auto"
                 onClick={() => navigate('/services')}
               >
                 Explore Services

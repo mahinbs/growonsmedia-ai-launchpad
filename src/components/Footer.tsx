@@ -32,33 +32,33 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-foreground text-background py-16">
-      <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+    <footer className="bg-foreground text-background py-12 sm:py-16">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8 sm:mb-12">
           {/* Company Info */}
-          <div className="lg:col-span-2">
+          <div className="sm:col-span-2 lg:col-span-2">
             <img 
               src={logo} 
               alt="GrowonsmediaAI" 
-              className="h-16 md:h-20 lg:h-24 w-auto mb-4 drop-shadow-2xl hover:drop-shadow-[0_0_30px_rgba(59,130,246,0.3)] transition-all duration-300"
+              className="h-14 sm:h-16 md:h-20 lg:h-24 w-auto mb-3 sm:mb-4 drop-shadow-2xl hover:drop-shadow-[0_0_30px_rgba(59,130,246,0.3)] transition-all duration-300"
             />
-            <p className="text-background/70 mb-6 max-w-md">
+            <p className="text-background/70 mb-4 sm:mb-6 max-w-md text-sm sm:text-base leading-relaxed">
               Transform your business into AI-first with our cutting-edge solutions. 
               We help companies launch their vision with AI-powered innovation.
             </p>
             
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-ai-primary" />
-                <a href={`mailto:${CONTACT_INFO.email}`} className="text-background/70 hover:text-ai-primary transition-colors">
+                <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-ai-primary flex-shrink-0" />
+                <a href={`mailto:${CONTACT_INFO.email}`} className="text-background/70 hover:text-ai-primary transition-colors text-sm sm:text-base break-all">
                   {CONTACT_INFO.email}
                 </a>
               </div>
               <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-ai-primary" />
+                <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-ai-primary flex-shrink-0" />
                 <button 
                   onClick={() => openWhatsApp("Hi! I'm interested in your AI services.")}
-                  className="text-background/70 hover:text-ai-primary transition-colors cursor-pointer"
+                  className="text-background/70 hover:text-ai-primary transition-colors cursor-pointer text-sm sm:text-base touch-manipulation min-h-[44px] flex items-center"
                 >
                   {getFormattedWhatsAppNumber()}
                 </button>
@@ -68,11 +68,11 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h4 className="font-semibold mb-4 text-ai-primary">Services</h4>
-            <ul className="space-y-2">
+            <h4 className="font-semibold mb-3 sm:mb-4 text-ai-primary text-sm sm:text-base">Services</h4>
+            <ul className="space-y-1 sm:space-y-2">
               {services.map((service, index) => (
                 <li key={index}>
-                  <a href="#services" className="text-background/70 hover:text-ai-primary transition-colors text-sm">
+                  <a href="#services" className="text-background/70 hover:text-ai-primary transition-colors text-xs sm:text-sm touch-manipulation block py-1">
                     {service}
                   </a>
                 </li>
@@ -82,11 +82,11 @@ const Footer = () => {
 
           {/* Company */}
           <div>
-            <h4 className="font-semibold mb-4 text-ai-primary">Company</h4>
-            <ul className="space-y-2">
+            <h4 className="font-semibold mb-3 sm:mb-4 text-ai-primary text-sm sm:text-base">Company</h4>
+            <ul className="space-y-1 sm:space-y-2">
               {company.map((item, index) => (
                 <li key={index}>
-                  <a href="#" className="text-background/70 hover:text-ai-primary transition-colors text-sm">
+                  <a href="#" className="text-background/70 hover:text-ai-primary transition-colors text-xs sm:text-sm touch-manipulation block py-1">
                     {item}
                   </a>
                 </li>
@@ -96,12 +96,12 @@ const Footer = () => {
         </div>
 
         {/* Office Addresses */}
-        <div className="grid md:grid-cols-2 gap-8 mb-12 p-6 bg-background/5 rounded-2xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12 p-4 sm:p-6 bg-background/5 rounded-2xl">
           <div className="flex items-start space-x-3">
-            <MapPin className="w-5 h-5 text-ai-primary mt-1" />
+            <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-ai-primary mt-1 flex-shrink-0" />
             <div>
-              <h5 className="font-semibold mb-1 text-ai-primary">India Headquarters</h5>
-              <p className="text-background/70 text-sm">
+              <h5 className="font-semibold mb-1 text-ai-primary text-sm sm:text-base">India Headquarters</h5>
+              <p className="text-background/70 text-xs sm:text-sm leading-relaxed">
                 995/208-A, 2-G, Gali No.12, Kailash Nagar,<br />
                 Gandhi Nagar, Delhi 110031, India
               </p>
@@ -109,10 +109,10 @@ const Footer = () => {
           </div>
           
           <div className="flex items-start space-x-3">
-            <MapPin className="w-5 h-5 text-ai-primary mt-1" />
+            <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-ai-primary mt-1 flex-shrink-0" />
             <div>
-              <h5 className="font-semibold mb-1 text-ai-primary">USA Office</h5>
-              <p className="text-background/70 text-sm">
+              <h5 className="font-semibold mb-1 text-ai-primary text-sm sm:text-base">USA Office</h5>
+              <p className="text-background/70 text-xs sm:text-sm leading-relaxed">
                 271 W Short St, Suite 410,<br />
                 Lexington, Kentucky (KY)-40507, USA
               </p>
@@ -121,22 +121,22 @@ const Footer = () => {
         </div>
 
         {/* Social Media & Copyright */}
-        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-background/20">
-          <div className="flex space-x-4 mb-4 md:mb-0">
+        <div className="flex flex-col sm:flex-row justify-between items-center pt-6 sm:pt-8 border-t border-background/20 gap-4">
+          <div className="flex space-x-3 sm:space-x-4">
             {socialLinks.map((social, index) => (
               <a 
                 key={index}
                 href={social.url}
-                className="w-10 h-10 bg-background/10 rounded-full flex items-center justify-center hover:bg-ai-primary transition-colors"
+                className="w-10 h-10 sm:w-12 sm:h-12 bg-background/10 rounded-full flex items-center justify-center hover:bg-ai-primary transition-colors touch-manipulation"
                 aria-label={social.name}
               >
-                <social.icon className="w-5 h-5" />
+                <social.icon className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
             ))}
           </div>
           
-          <div className="text-center md:text-right">
-            <p className="text-background/70 text-sm">
+          <div className="text-center sm:text-right">
+            <p className="text-background/70 text-xs sm:text-sm">
               © {currentYear} Growonsmedia. All rights reserved.
             </p>
             <p className="text-background/50 text-xs mt-1">
