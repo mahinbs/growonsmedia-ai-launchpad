@@ -7,7 +7,7 @@ const AIJourney = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 pt-32 bg-gradient-hero">
+      <section className="relative py-20 pt-6 md:pt-8 bg-gradient-hero">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-4xl mx-auto fade-in">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">

@@ -7,7 +7,7 @@ const HeroSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="hero" className="min-h-screen flex items-center bg-gradient-hero pt-24 sm:pt-28 md:pt-32 lg:pt-36">
+    <section id="hero" className="min-h-screen flex items-center bg-gradient-hero pt-6 md:pt-8">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}

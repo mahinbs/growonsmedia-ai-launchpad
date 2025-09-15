@@ -14,12 +14,12 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-6">
         {/* Main navigation */}
-        <div className="flex items-center justify-between py-5 md:py-6">
+        <div className="flex items-center justify-between py-3 md:py-4">
           <Link to="/" className="flex items-center">
             <img 
               src={logo} 
               alt="GrowonsmediaAI" 
-              className="h-14 sm:h-16 md:h-20 lg:h-24 w-auto transition-all duration-300 hover:scale-105 drop-shadow-lg hover:drop-shadow-xl"
+              className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto transition-all duration-300 hover:scale-105 drop-shadow-lg hover:drop-shadow-xl"
             />
           </Link>
           
@@ -58,7 +58,7 @@ const Header = () => {
 
           <div className="flex items-center space-x-4">
             <Link to="/contact">
-              <Button className="hidden sm:flex btn-hero text-sm sm:text-base px-4 sm:px-8 py-2 sm:py-4">
+              <Button className="hidden sm:flex btn-hero text-sm sm:text-base px-4 sm:px-8 py-1.5 sm:py-2">
                 Launch Your Vision
               </Button>
             </Link>
