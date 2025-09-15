@@ -1,5 +1,7 @@
 import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram, Facebook } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { openWhatsApp, getFormattedWhatsAppNumber } from "@/lib/whatsapp";
+import { CONTACT_INFO } from "@/config/contact";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -48,15 +50,18 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-ai-primary" />
-                <a href="mailto:contact@growonsmedia.ai" className="text-background/70 hover:text-ai-primary transition-colors">
-                  contact@growonsmedia.ai
+                <a href={`mailto:${CONTACT_INFO.email}`} className="text-background/70 hover:text-ai-primary transition-colors">
+                  {CONTACT_INFO.email}
                 </a>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-ai-primary" />
-                <a href="https://wa.me/919625978823" className="text-background/70 hover:text-ai-primary transition-colors">
-                  +91 9625978823
-                </a>
+                <button 
+                  onClick={() => openWhatsApp("Hi! I'm interested in your AI services.")}
+                  className="text-background/70 hover:text-ai-primary transition-colors cursor-pointer"
+                >
+                  {getFormattedWhatsAppNumber()}
+                </button>
               </div>
             </div>
           </div>

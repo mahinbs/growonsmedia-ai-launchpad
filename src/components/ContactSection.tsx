@@ -6,6 +6,8 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { openWhatsApp, getFormattedWhatsAppNumber } from "@/lib/whatsapp";
+import { CONTACT_INFO } from "@/config/contact";
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -234,8 +236,8 @@ const ContactSection = () => {
                   </div>
                   <div className="min-w-0 flex-1">
                     <h4 className="text-sm sm:text-base font-semibold mb-1">Email Us</h4>
-                    <a href="mailto:contact@growonsmedia.ai" className="text-sm sm:text-base text-muted-foreground hover:text-ai-primary transition-colors break-all">
-                      contact@growonsmedia.ai
+                    <a href={`mailto:${CONTACT_INFO.email}`} className="text-sm sm:text-base text-muted-foreground hover:text-ai-primary transition-colors break-all">
+                      {CONTACT_INFO.email}
                     </a>
                   </div>
                 </div>
@@ -246,9 +248,12 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Call or WhatsApp</h4>
-                    <a href="https://wa.me/919625978823" className="text-muted-foreground hover:text-ai-primary transition-colors">
-                      +91 9625978823
-                    </a>
+                    <button 
+                      onClick={() => openWhatsApp("Hi! I'm interested in your AI services. Can you provide more information?")}
+                      className="text-muted-foreground hover:text-ai-primary transition-colors cursor-pointer"
+                    >
+                      {getFormattedWhatsAppNumber()}
+                    </button>
                   </div>
                 </div>
 
@@ -288,7 +293,7 @@ const ContactSection = () => {
               </p>
               <Button 
                 className="bg-white text-ai-primary hover:bg-white/90"
-                onClick={() => window.open('https://wa.me/919625978823', '_blank')}
+                onClick={() => openWhatsApp("Hi! I need immediate help with my AI project. Are you available to chat?")}
               >
                 Chat on WhatsApp
               </Button>

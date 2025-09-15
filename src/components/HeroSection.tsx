@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import heroImage from "@/assets/hero-ai-illustration.jpg";
+import { openWhatsApp, getFormattedWhatsAppNumber } from "@/lib/whatsapp";
+import { CONTACT_INFO } from "@/config/contact";
 
 const HeroSection = () => {
   return (
@@ -47,17 +49,17 @@ const HeroSection = () => {
 
             {/* Quick Contact */}
             <div className="flex items-center space-x-6 pt-4">
+              <button
+                onClick={() => openWhatsApp("Hi! I'm interested in your AI services. Can you help me?")}
+                className="text-sm text-muted-foreground hover:text-ai-primary transition-colors cursor-pointer"
+              >
+                WhatsApp: {getFormattedWhatsAppNumber()}
+              </button>
               <a 
-                href="https://wa.me/919625978823" 
+                href={`mailto:${CONTACT_INFO.email}`} 
                 className="text-sm text-muted-foreground hover:text-ai-primary transition-colors"
               >
-                WhatsApp: +91 9625978823
-              </a>
-              <a 
-                href="mailto:contact@growonsmedia.ai" 
-                className="text-sm text-muted-foreground hover:text-ai-primary transition-colors"
-              >
-                contact@growonsmedia.ai
+                {CONTACT_INFO.email}
               </a>
             </div>
           </div>

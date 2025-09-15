@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Menu, X, Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
+import { openWhatsApp, getFormattedWhatsAppNumber } from "@/lib/whatsapp";
+import { CONTACT_INFO } from "@/config/contact";
 
 interface MobileMenuProps {
   onContactClick: () => void;
@@ -108,19 +110,19 @@ const MobileMenu = ({ onContactClick }: MobileMenuProps) => {
             <div className="mt-12 pt-8 border-t border-border space-y-4">
               <div className="text-sm text-muted-foreground mb-4">Get in touch</div>
               <a 
-                href="mailto:contact@growonsmedia.ai"
+                href={`mailto:${CONTACT_INFO.email}`}
                 className="flex items-center space-x-3 text-sm hover:text-ai-primary transition-colors"
               >
                 <Mail className="w-4 h-4" />
-                <span>contact@growonsmedia.ai</span>
+                <span>{CONTACT_INFO.email}</span>
               </a>
-              <a 
-                href="https://wa.me/919625978823"
-                className="flex items-center space-x-3 text-sm hover:text-ai-primary transition-colors"
+              <button
+                onClick={() => openWhatsApp("Hi! I'm interested in your AI services from mobile.")}
+                className="flex items-center space-x-3 text-sm hover:text-ai-primary transition-colors cursor-pointer w-full text-left"
               >
                 <Phone className="w-4 h-4" />
-                <span>+91 9625978823</span>
-              </a>
+                <span>{getFormattedWhatsAppNumber()}</span>
+              </button>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <MapPin className="w-4 h-4" />
                 <span>India HQ & USA Office</span>
