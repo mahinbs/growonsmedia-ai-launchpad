@@ -37,8 +37,8 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <img 
               src={logo} 
-              alt="Growonsmedia" 
-              className="h-10 w-auto mb-4 filter brightness-0 invert"
+              alt="GrowonsmediaAI" 
+              className="h-12 md:h-14 w-auto mb-4 drop-shadow-lg"
             />
             <p className="text-background/70 mb-6 max-w-md">
               Transform your business into AI-first with our cutting-edge solutions. 

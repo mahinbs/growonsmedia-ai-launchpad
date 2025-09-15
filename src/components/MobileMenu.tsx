@@ -57,8 +57,8 @@ const MobileMenu = ({ onContactClick }: MobileMenuProps) => {
           <div className="flex items-center justify-between p-6 border-b border-border">
             <img 
               src={logo} 
-              alt="Growonsmedia" 
-              className="h-8 w-auto"
+              alt="GrowonsmediaAI" 
+              className="h-10 md:h-12 w-auto drop-shadow-sm"
             />
             <button
               onClick={toggleMenu}

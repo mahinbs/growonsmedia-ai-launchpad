@@ -15,8 +15,8 @@ const Header = () => {
           <div className="flex items-center">
             <img 
               src={logo} 
-              alt="Growonsmedia" 
-              className="h-8 sm:h-10 w-auto transition-all duration-300 hover:scale-105"
+              alt="GrowonsmediaAI" 
+              className="h-10 sm:h-12 md:h-14 w-auto transition-all duration-300 hover:scale-105 drop-shadow-sm"
             />
           </div>
           
