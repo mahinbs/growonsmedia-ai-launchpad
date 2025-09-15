@@ -46,18 +46,41 @@ const AIJourneySection = () => {
       const sectionHeight = rect.height;
       const windowHeight = window.innerHeight;
       
-      // Calculate scroll progress through the section
-      if (rect.top <= windowHeight && rect.bottom >= 0) {
-        const scrollProgress = Math.max(0, Math.min(1, (windowHeight - rect.top) / (sectionHeight + windowHeight)));
-        const stepIndex = Math.floor(scrollProgress * steps.length);
-        setActiveStep(Math.min(stepIndex, steps.length - 1));
+      // Start animation when section is 30% into viewport
+      const triggerPoint = windowHeight * 0.7;
+      
+      if (rect.top <= triggerPoint && rect.bottom >= 0) {
+        // Calculate progress through the section
+        const scrollProgress = Math.max(0, Math.min(1, (triggerPoint - rect.top) / (sectionHeight * 0.8)));
+        
+        // Determine which step should be active
+        let stepIndex = 0;
+        if (scrollProgress > 0.1) stepIndex = 0; // Analyze
+        if (scrollProgress > 0.4) stepIndex = 1; // Evaluate  
+        if (scrollProgress > 0.7) stepIndex = 2; // Develop
+        
+        setActiveStep(stepIndex);
+      } else if (rect.top > triggerPoint) {
+        setActiveStep(0); // Reset to first step when above trigger
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // Throttle scroll events for better performance
+    let ticking = false;
+    const throttledScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', throttledScroll);
     handleScroll(); // Initial call
     
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', throttledScroll);
   }, [steps.length]);
 
   return (
@@ -80,21 +103,26 @@ const AIJourneySection = () => {
             {steps.map((step, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0.3, x: -50 }}
+                initial={{ opacity: 0.4, x: -30 }}
                 animate={{ 
-                  opacity: activeStep >= index ? 1 : 0.3,
-                  x: activeStep >= index ? 0 : -50,
-                  scale: activeStep === index ? 1.05 : 1
+                  opacity: activeStep >= index ? 1 : 0.4,
+                  x: 0,
+                  scale: activeStep === index ? 1.02 : 1
                 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                className={`relative flex items-center space-x-6 p-6 rounded-2xl transition-all duration-500 ${
+                transition={{ 
+                  duration: 0.5, 
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                  delay: index * 0.1
+                }}
+                className={`relative flex items-center space-x-6 p-6 rounded-2xl cursor-pointer ${
                   activeStep === index 
-                    ? 'bg-gradient-to-r from-ai-primary/10 to-ai-secondary/10 border-2 border-ai-primary/30' 
-                    : 'bg-card/50 border border-border/50'
+                    ? 'bg-gradient-to-r from-ai-primary/10 to-ai-secondary/10 border-2 border-ai-primary/30 transform' 
+                    : 'bg-card/50 border border-border/50 hover:bg-card/80'
                 }`}
+                onClick={() => setActiveStep(index)}
               >
                 {/* AED Letter Emphasis */}
-                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-bold transition-all duration-500 ${
+                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-bold transition-all duration-300 ${
                   activeStep === index 
                     ? 'bg-gradient-primary text-white shadow-glow' 
                     : 'bg-muted text-muted-foreground'

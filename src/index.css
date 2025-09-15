@@ -158,6 +158,11 @@
     @apply bg-gradient-to-r from-ai-primary to-ai-accent bg-clip-text text-transparent;
   }
   
+  /* Gradient Backgrounds */
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--ai-primary)), hsl(var(--ai-secondary)));
+  }
+  
   /* Counter Animation */
   .counter {
     @apply text-4xl font-bold gradient-text;
