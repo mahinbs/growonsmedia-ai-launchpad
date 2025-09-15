@@ -1,123 +1,35 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Globe, 
-  Smartphone, 
-  Cloud, 
-  Blocks, 
-  Headset, 
-  Wifi, 
-  Gamepad2, 
-  Bot, 
-  Phone, 
-  Brain, 
-  MessageSquare, 
-  Palette, 
-  BarChart3, 
-  Server 
-} from "lucide-react";
+import { servicesData, ServiceData } from "@/data/servicesData";
+import ServiceDetailModal from "./ServiceDetailModal";
 
 const ServicesSection = () => {
-  const services = [
-    {
-      icon: Globe,
-      title: "Web Applications",
-      description: "Custom web solutions built with modern frameworks",
-      technologies: ["React", "Next.js", "TypeScript", "Node.js"],
-      features: ["Responsive Design", "Performance Optimized", "SEO Ready", "Progressive Web App"]
-    },
-    {
-      icon: Smartphone,
-      title: "Mobile Applications",
-      description: "Native and cross-platform mobile apps",
-      technologies: ["React Native", "Flutter", "iOS", "Android"],
-      features: ["Cross Platform", "Native Performance", "App Store Ready", "Push Notifications"]
-    },
-    {
-      icon: Cloud,
-      title: "SaaS Solutions",
-      description: "Scalable software-as-a-service platforms",
-      technologies: ["AWS", "Azure", "Microservices", "Docker"],
-      features: ["Multi-tenant", "Auto Scaling", "Subscription Management", "Analytics Dashboard"]
-    },
-    {
-      icon: Blocks,
-      title: "Blockchain Development",
-      description: "Decentralized applications and smart contracts",
-      technologies: ["Ethereum", "Solidity", "Web3", "IPFS"],
-      features: ["Smart Contracts", "DeFi Integration", "NFT Marketplace", "Token Economics"]
-    },
-    {
-      icon: Headset,
-      title: "AR / VR Development",
-      description: "Immersive augmented and virtual reality experiences",
-      technologies: ["Unity", "Unreal Engine", "ARKit", "ARCore"],
-      features: ["3D Modeling", "Spatial Computing", "Hand Tracking", "Cross-platform VR"]
-    },
-    {
-      icon: Wifi,
-      title: "IoT Development",
-      description: "Connected devices and IoT ecosystems",
-      technologies: ["Arduino", "Raspberry Pi", "AWS IoT", "MQTT"],
-      features: ["Sensor Integration", "Real-time Data", "Remote Monitoring", "Edge Computing"]
-    },
-    {
-      icon: Gamepad2,
-      title: "Game Development",
-      description: "Engaging games for multiple platforms",
-      technologies: ["Unity", "Unreal Engine", "C#", "JavaScript"],
-      features: ["2D/3D Games", "Multiplayer", "In-app Purchases", "Cross-platform"]
-    },
-    {
-      icon: Bot,
-      title: "AI Automation",
-      description: "Intelligent automation for business processes",
-      technologies: ["Python", "TensorFlow", "OpenAI", "Zapier"],
-      features: ["Process Automation", "ML Models", "RPA", "Workflow Optimization"]
-    },
-    {
-      icon: Phone,
-      title: "AI Calling Agency",
-      description: "AI-powered voice assistants and call automation",
-      technologies: ["Voice AI", "NLP", "Twilio", "Speech Recognition"],
-      features: ["Voice Bots", "Call Analytics", "Lead Qualification", "24/7 Availability"]
-    },
-    {
-      icon: Brain,
-      title: "AI Development",
-      description: "Custom AI solutions and machine learning models",
-      technologies: ["Python", "PyTorch", "OpenAI", "LangChain"],
-      features: ["Custom AI Models", "ML Pipeline", "AI Integration", "Model Training"]
-    },
-    {
-      icon: MessageSquare,
-      title: "Chatbot Development",
-      description: "Intelligent conversational AI for customer support",
-      technologies: ["Dialogflow", "Rasa", "GPT-4", "WhatsApp API"],
-      features: ["Multi-channel", "Natural Language", "Integration Ready", "Analytics"]
-    },
-    {
-      icon: Palette,
-      title: "UI/UX Design",
-      description: "Beautiful and intuitive user experiences",
-      technologies: ["Figma", "Adobe XD", "Sketch", "Prototyping"],
-      features: ["User Research", "Wireframing", "Prototyping", "Design Systems"]
-    },
-    {
-      icon: BarChart3,
-      title: "Data Analytics",
-      description: "Business intelligence and data-driven insights",
-      technologies: ["Python", "Tableau", "Power BI", "SQL"],
-      features: ["Data Visualization", "Predictive Analytics", "Real-time Dashboards", "ETL Pipeline"]
-    },
-    {
-      icon: Server,
-      title: "Cloud Computing",
-      description: "Scalable cloud infrastructure and deployment",
-      technologies: ["AWS", "Azure", "GCP", "Kubernetes"],
-      features: ["Auto Scaling", "Load Balancing", "Disaster Recovery", "Cost Optimization"]
+  const [selectedService, setSelectedService] = useState<ServiceData | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleViewDetails = (service: ServiceData) => {
+    setSelectedService(service);
+    setIsModalOpen(true);
+  };
+
+  const handleGetQuote = (serviceTitle: string) => {
+    // Scroll to contact section and pre-select service
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+      
+      // Dispatch custom event to pre-select service in contact form
+      window.dispatchEvent(new CustomEvent('preSelectService', { 
+        detail: { serviceTitle } 
+      }));
     }
-  ];
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+    setSelectedService(null);
+  };
 
   return (
     <section id="services" className="py-24">
@@ -133,7 +45,7 @@ const ServicesSection = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
+          {servicesData.map((service, index) => (
             <div key={index} className="service-card fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
               <div className="mb-6">
                 <div className="w-16 h-16 bg-ai-glow rounded-2xl flex items-center justify-center mb-4">
@@ -168,10 +80,19 @@ const ServicesSection = () => {
                 </div>
 
                 <div className="flex gap-2 pt-4">
-                  <Button variant="outline" size="sm" className="flex-1">
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="flex-1"
+                    onClick={() => handleViewDetails(service)}
+                  >
                     View Details
                   </Button>
-                  <Button size="sm" className="flex-1 bg-ai-primary hover:bg-ai-secondary">
+                  <Button 
+                    size="sm" 
+                    className="flex-1 bg-ai-primary hover:bg-ai-secondary"
+                    onClick={() => handleGetQuote(service.title)}
+                  >
                     Get Quote
                   </Button>
                 </div>
@@ -181,11 +102,18 @@ const ServicesSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Button className="btn-hero">
-            View All Services
+          <Button className="btn-hero" onClick={() => handleGetQuote("General Inquiry")}>
+            Get Your Free AI Consultation
           </Button>
         </div>
       </div>
+
+      <ServiceDetailModal
+        service={selectedService}
+        isOpen={isModalOpen}
+        onClose={handleModalClose}
+        onGetQuote={handleGetQuote}
+      />
     </section>
   );
 };

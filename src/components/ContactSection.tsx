@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -48,6 +48,43 @@ const ContactSection = () => {
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
+
+  // Listen for service pre-selection from other components
+  useEffect(() => {
+    const handlePreSelectService = (event: CustomEvent) => {
+      const { serviceTitle } = event.detail;
+      const serviceMap: { [key: string]: string } = {
+        "Web Applications": "web-app",
+        "Mobile Applications": "mobile-app", 
+        "AI Automation": "ai-automation",
+        "AI Development": "ai-development",
+        "Chatbot Development": "chatbot",
+        "SaaS Solutions": "saas",
+        "Blockchain Development": "blockchain",
+        "AR / VR Development": "ar-vr",
+        "IoT Development": "iot",
+        "Game Development": "game",
+        "AI Calling Agency": "ai-calling",
+        "UI/UX Design": "ui-ux",
+        "Data Analytics": "data-analytics",
+        "Cloud Computing": "cloud"
+      };
+      
+      const serviceValue = serviceMap[serviceTitle] || "other";
+      setFormData(prev => ({ 
+        ...prev, 
+        service: serviceValue,
+        message: serviceTitle !== "General Inquiry" 
+          ? `I'm interested in ${serviceTitle} services. Please provide more information about pricing, timeline, and next steps.`
+          : ""
+      }));
+    };
+
+    window.addEventListener('preSelectService', handlePreSelectService as EventListener);
+    return () => {
+      window.removeEventListener('preSelectService', handlePreSelectService as EventListener);
+    };
+  }, []);
 
   return (
     <section id="contact" className="py-24">
@@ -123,10 +160,18 @@ const ContactSection = () => {
                     <SelectContent>
                       <SelectItem value="web-app">Web Applications</SelectItem>
                       <SelectItem value="mobile-app">Mobile Applications</SelectItem>
+                      <SelectItem value="saas">SaaS Solutions</SelectItem>
+                      <SelectItem value="blockchain">Blockchain Development</SelectItem>
+                      <SelectItem value="ar-vr">AR / VR Development</SelectItem>
+                      <SelectItem value="iot">IoT Development</SelectItem>
+                      <SelectItem value="game">Game Development</SelectItem>
                       <SelectItem value="ai-automation">AI Automation</SelectItem>
+                      <SelectItem value="ai-calling">AI Calling Agency</SelectItem>
                       <SelectItem value="ai-development">AI Development</SelectItem>
                       <SelectItem value="chatbot">Chatbot Development</SelectItem>
-                      <SelectItem value="saas">SaaS Solutions</SelectItem>
+                      <SelectItem value="ui-ux">UI/UX Design</SelectItem>
+                      <SelectItem value="data-analytics">Data Analytics</SelectItem>
+                      <SelectItem value="cloud">Cloud Computing</SelectItem>
                       <SelectItem value="other">Other Services</SelectItem>
                     </SelectContent>
                   </Select>
