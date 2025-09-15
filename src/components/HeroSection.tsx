@@ -4,7 +4,7 @@ import heroImage from "@/assets/hero-ai-illustration.jpg";
 
 const HeroSection = () => {
   return (
-    <section id="hero" className="min-h-screen flex items-center bg-gradient-hero pt-20">
+    <section id="hero" className="min-h-screen flex items-center bg-gradient-hero pt-24 sm:pt-28 md:pt-32 lg:pt-36">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
