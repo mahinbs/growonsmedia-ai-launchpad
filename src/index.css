@@ -130,6 +130,28 @@
     @apply border-border;
   }
 
+  html {
+    scroll-padding-top: 88px;
+  }
+  
+  @media (min-width: 640px) {
+    html {
+      scroll-padding-top: 104px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    html {
+      scroll-padding-top: 128px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    html {
+      scroll-padding-top: 144px;
+    }
+  }
+
   body {
     @apply bg-background text-foreground font-inter antialiased;
     /* Optimize mobile scrolling */
