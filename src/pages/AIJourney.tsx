@@ -166,7 +166,7 @@ const AIJourney = () => {
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button variant="outline" className="text-base px-8 py-4 border-white text-white hover:bg-white hover:text-ai-primary [&_svg]:text-white hover:[&_svg]:text-ai-primary">
+                <Button variant="outline" className="text-base px-8 py-4 bg-transparent border-white text-white hover:bg-white hover:text-ai-primary [&_svg]:text-white hover:[&_svg]:text-ai-primary">
                   Get Free AI Consultation
                 </Button>
               </Link>

@@ -38,14 +38,14 @@ const MobileMenu = () => {
       {/* Mobile Menu Overlay */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 lg:hidden"
+          className="fixed inset-0 bg-background/80 backdrop-blur-sm z-[60] lg:hidden"
           onClick={() => setIsOpen(false)}
         />
       )}
 
       {/* Mobile Menu Slide Panel */}
       <div className={`
-        fixed top-0 right-0 h-full w-80 max-w-[90vw] bg-card border-l border-border z-50 lg:hidden
+        fixed top-0 right-0 h-full w-80 max-w-[90vw] bg-card border-l border-border z-[70] lg:hidden
         transform transition-transform duration-300 ease-out
         ${isOpen ? 'translate-x-0' : 'translate-x-full'}
       `}>
