@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { servicesData, ServiceData } from "@/data/servicesData";
 import ServiceDetailModal from "./ServiceDetailModal";
+import { DollarSign, Clock } from "lucide-react";
 
 const ServicesSection = () => {
   const [selectedService, setSelectedService] = useState<ServiceData | null>(null);
@@ -46,56 +47,118 @@ const ServicesSection = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {servicesData.map((service, index) => (
-            <div key={index} className="service-card fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-              <div className="mb-6">
-                <div className="w-16 h-16 bg-ai-glow rounded-2xl flex items-center justify-center mb-4">
-                  <service.icon className="w-8 h-8 text-ai-primary" />
+            <div 
+              key={index} 
+              className="relative bg-card/30 backdrop-blur-sm rounded-2xl p-6 border transition-all duration-300 hover:scale-105 hover:shadow-2xl fade-in group" 
+              style={{ 
+                animationDelay: `${index * 0.1}s`,
+                borderColor: service.accentColor,
+                borderWidth: '2px',
+                boxShadow: `0 0 20px ${service.accentColor}15`
+              }}
+            >
+              {/* Popular Badge */}
+              {service.isPopular && (
+                <div 
+                  className="absolute -top-3 -right-3 px-3 py-1 rounded-full text-xs font-bold text-white"
+                  style={{ backgroundColor: service.accentColor }}
+                >
+                  Popular
                 </div>
-                <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-                <p className="text-muted-foreground">{service.description}</p>
+              )}
+
+              {/* Pricing and Timeline */}
+              <div className="flex justify-between items-center mb-6">
+                <div className="flex items-center gap-1 text-2xl font-bold" style={{ color: service.accentColor }}>
+                  <DollarSign className="w-5 h-5" />
+                  {service.startingPrice.replace('$', '')}
+                </div>
+                <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                  <Clock className="w-4 h-4" />
+                  {service.timeline}
+                </div>
               </div>
 
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-semibold text-sm mb-2 text-ai-primary">Technologies Used</h4>
-                  <div className="flex flex-wrap gap-1">
-                    {service.technologies.map((tech, techIndex) => (
-                      <Badge key={techIndex} variant="secondary" className="text-xs">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
+              {/* Service Icon and Title */}
+              <div className="mb-6">
+                <div 
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110"
+                  style={{ 
+                    backgroundColor: `${service.accentColor}20`,
+                    border: `2px solid ${service.accentColor}40`
+                  }}
+                >
+                  <service.icon className="w-8 h-8" style={{ color: service.accentColor }} />
                 </div>
+                <h3 className="text-xl font-bold mb-2 text-foreground">{service.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
+              </div>
 
-                <div>
-                  <h4 className="font-semibold text-sm mb-2 text-ai-primary">Key Features</h4>
-                  <ul className="text-sm text-muted-foreground space-y-1">
-                    {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center">
-                        <div className="w-1.5 h-1.5 bg-ai-primary rounded-full mr-2"></div>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              {/* Key Features */}
+              <div className="mb-6">
+                <h4 className="font-semibold text-sm mb-3" style={{ color: service.accentColor }}>Key Features</h4>
+                <ul className="text-sm text-muted-foreground space-y-2">
+                  {service.features.slice(0, 3).map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-center">
+                      <div 
+                        className="w-1.5 h-1.5 rounded-full mr-3 flex-shrink-0"
+                        style={{ backgroundColor: service.accentColor }}
+                      ></div>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-                <div className="flex gap-2 pt-4">
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="flex-1"
-                    onClick={() => handleViewDetails(service)}
-                  >
-                    View Details
-                  </Button>
-                  <Button 
-                    size="sm" 
-                    className="flex-1 bg-ai-primary hover:bg-ai-secondary"
-                    onClick={() => handleGetQuote(service.title)}
-                  >
-                    Get Quote
-                  </Button>
+              {/* Technologies */}
+              <div className="mb-6">
+                <div className="flex flex-wrap gap-1">
+                  {service.technologies.slice(0, 3).map((tech, techIndex) => (
+                    <Badge 
+                      key={techIndex} 
+                      variant="secondary" 
+                      className="text-xs border-0"
+                      style={{ 
+                        backgroundColor: `${service.accentColor}20`,
+                        color: service.accentColor
+                      }}
+                    >
+                      {tech}
+                    </Badge>
+                  ))}
+                  {service.technologies.length > 3 && (
+                    <Badge variant="secondary" className="text-xs">
+                      +{service.technologies.length - 3}
+                    </Badge>
+                  )}
                 </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-3">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="flex-1 border-2 transition-all duration-300 hover:scale-105"
+                  style={{ 
+                    borderColor: service.accentColor,
+                    color: service.accentColor
+                  }}
+                  onClick={() => handleViewDetails(service)}
+                >
+                  Details →
+                </Button>
+                <Button 
+                  size="sm" 
+                  className="flex-1 text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                  style={{ 
+                    backgroundColor: service.accentColor,
+                    boxShadow: `0 4px 15px ${service.accentColor}40`
+                  }}
+                  onClick={() => handleGetQuote(service.title)}
+                >
+                  Quote
+                </Button>
               </div>
             </div>
           ))}
