@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { servicesData, ServiceData } from "@/data/servicesData";
@@ -8,6 +9,8 @@ import { DollarSign, Clock } from "lucide-react";
 const ServicesSection = () => {
   const [selectedService, setSelectedService] = useState<ServiceData | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleViewDetails = (service: ServiceData) => {
     setSelectedService(service);
@@ -15,15 +18,21 @@ const ServicesSection = () => {
   };
 
   const handleGetQuote = (serviceTitle: string) => {
-    // Scroll to contact section and pre-select service
+    // Check if we're on the home page with contact section
     const contactSection = document.getElementById('contact');
-    if (contactSection) {
+    if (contactSection && location.pathname === '/') {
+      // Scroll to contact section on same page
       contactSection.scrollIntoView({ behavior: 'smooth' });
       
       // Dispatch custom event to pre-select service in contact form
       window.dispatchEvent(new CustomEvent('preSelectService', { 
         detail: { serviceTitle } 
       }));
+    } else {
+      // Navigate to contact page with state
+      navigate('/contact', { 
+        state: { preSelectedService: serviceTitle }
+      });
     }
   };
 
