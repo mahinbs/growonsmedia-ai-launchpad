@@ -1,40 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Growonsmedia Design System - AI-Driven, Futuristic, Professional */
 
 @layer base {
   :root {
+    /* Core Brand Colors */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 220 26% 14%;
+    
+    /* AI Theme Colors */
+    --ai-primary: 239 84% 67%;
+    --ai-secondary: 217 91% 60%;
+    --ai-accent: 188 94% 43%;
+    --ai-glow: 251 91% 95%;
+    
+    /* Semantic Colors */
+    --success: 142 71% 45%;
+    --warning: 38 92% 50%;
+    --error: 0 84% 60%;
 
+    /* Component Colors */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 220 26% 14%;
+    --card-border: 220 13% 91%;
+    
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --popover-foreground: 220 26% 14%;
+    
+    --primary: 239 84% 67%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 251 91% 95%;
+    
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 26% 14%;
+    
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+    
+    --accent: 188 94% 43%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 239 84% 67%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--ai-primary)), hsl(var(--ai-secondary)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--ai-accent)), hsl(var(--ai-primary)));
+    --gradient-hero: linear-gradient(180deg, hsl(var(--background)), hsl(var(--ai-glow)));
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px hsl(var(--ai-primary) / 0.1);
+    --shadow-glow: 0 0 40px hsl(var(--ai-primary) / 0.2);
+    --shadow-card: 0 4px 6px -1px hsl(220 22% 23% / 0.1);
 
     --radius: 0.5rem;
 
@@ -56,8 +81,8 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 220 26% 14%;
+    --foreground: 0 0% 100%;
 
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
@@ -100,6 +125,67 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter antialiased;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Hero Button Variants */
+  .btn-hero {
+    @apply bg-gradient-to-r from-ai-primary to-ai-secondary text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-glow hover:scale-105;
+  }
+  
+  .btn-outline-hero {
+    @apply border-2 border-ai-primary text-ai-primary px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-ai-primary hover:text-white;
+  }
+  
+  /* Service Cards */
+  .service-card {
+    @apply bg-card border border-card-border rounded-2xl p-8 transition-all duration-300 hover:shadow-soft hover:-translate-y-2;
+  }
+  
+  /* AI Glow Effects */
+  .ai-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Animated Gradient Text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-ai-primary to-ai-accent bg-clip-text text-transparent;
+  }
+  
+  /* Counter Animation */
+  .counter {
+    @apply text-4xl font-bold gradient-text;
+  }
+  
+  /* Floating Animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  /* Fade In Animation */
+  .fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
