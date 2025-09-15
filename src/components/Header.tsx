@@ -1,10 +1,13 @@
 import { Button } from "@/components/ui/button";
 import MobileMenu from "@/components/MobileMenu";
+import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const Header = () => {
-  const handleContactClick = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  const location = useLocation();
+  
+  const isActive = (path: string) => {
+    return location.pathname === path;
   };
 
   return (
@@ -12,31 +15,55 @@ const Header = () => {
       <div className="container mx-auto px-6">
         {/* Main navigation */}
         <div className="flex items-center justify-between py-5 md:py-6">
-          <div className="flex items-center">
+          <Link to="/" className="flex items-center">
             <img 
               src={logo} 
               alt="GrowonsmediaAI" 
               className="h-14 sm:h-16 md:h-20 lg:h-24 w-auto transition-all duration-300 hover:scale-105 drop-shadow-lg hover:drop-shadow-xl"
             />
-          </div>
+          </Link>
           
           <nav className="hidden lg:flex items-center space-x-8">
-            <a href="#hero" className="hover:text-ai-primary transition-colors">Home</a>
-            <a href="#journey" className="hover:text-ai-primary transition-colors">AI Journey</a>
-            <a href="#services" className="hover:text-ai-primary transition-colors">Services</a>
-            <a href="#about" className="hover:text-ai-primary transition-colors">About</a>
-            <a href="#contact" className="hover:text-ai-primary transition-colors">Contact</a>
+            <Link 
+              to="/" 
+              className={`hover:text-ai-primary transition-colors ${isActive('/') ? 'text-ai-primary font-semibold' : ''}`}
+            >
+              Home
+            </Link>
+            <Link 
+              to="/ai-journey" 
+              className={`hover:text-ai-primary transition-colors ${isActive('/ai-journey') ? 'text-ai-primary font-semibold' : ''}`}
+            >
+              AI Journey
+            </Link>
+            <Link 
+              to="/services" 
+              className={`hover:text-ai-primary transition-colors ${isActive('/services') ? 'text-ai-primary font-semibold' : ''}`}
+            >
+              Services
+            </Link>
+            <Link 
+              to="/about" 
+              className={`hover:text-ai-primary transition-colors ${isActive('/about') ? 'text-ai-primary font-semibold' : ''}`}
+            >
+              About
+            </Link>
+            <Link 
+              to="/contact" 
+              className={`hover:text-ai-primary transition-colors ${isActive('/contact') ? 'text-ai-primary font-semibold' : ''}`}
+            >
+              Contact
+            </Link>
           </nav>
 
           <div className="flex items-center space-x-4">
-            <Button 
-              className="hidden sm:flex btn-hero text-sm sm:text-base px-4 sm:px-8 py-2 sm:py-4"
-              onClick={handleContactClick}
-            >
-              Launch Your Vision
-            </Button>
+            <Link to="/contact">
+              <Button className="hidden sm:flex btn-hero text-sm sm:text-base px-4 sm:px-8 py-2 sm:py-4">
+                Launch Your Vision
+              </Button>
+            </Link>
             
-            <MobileMenu onContactClick={handleContactClick} />
+            <MobileMenu />
           </div>
         </div>
       </div>

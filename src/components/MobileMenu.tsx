@@ -1,28 +1,23 @@
 import { useState } from "react";
 import { Menu, X, Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
 import { openWhatsApp, getFormattedWhatsAppNumber } from "@/lib/whatsapp";
 import { CONTACT_INFO } from "@/config/contact";
 
-interface MobileMenuProps {
-  onContactClick: () => void;
-}
-
-const MobileMenu = ({ onContactClick }: MobileMenuProps) => {
+const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = () => {
     setIsOpen(false);
-    const element = document.getElementById(href.replace('#', ''));
-    element?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const handleContactClick = () => {
-    setIsOpen(false);
-    onContactClick();
+  const isActive = (path: string) => {
+    return location.pathname === path;
   };
 
   return (
@@ -74,36 +69,41 @@ const MobileMenu = ({ onContactClick }: MobileMenuProps) => {
           {/* Navigation Links */}
           <nav className="flex-1 px-6 py-8">
             <div className="space-y-6">
-              <button
-                onClick={() => handleNavClick('#hero')}
-                className="block w-full text-left text-lg font-medium text-foreground hover:text-ai-primary transition-colors py-2"
+              <Link
+                to="/"
+                onClick={handleNavClick}
+                className={`block w-full text-left text-lg font-medium hover:text-ai-primary transition-colors py-2 ${isActive('/') ? 'text-ai-primary font-semibold' : 'text-foreground'}`}
               >
                 Home
-              </button>
-              <button
-                onClick={() => handleNavClick('#journey')}
-                className="block w-full text-left text-lg font-medium text-foreground hover:text-ai-primary transition-colors py-2"
+              </Link>
+              <Link
+                to="/ai-journey"
+                onClick={handleNavClick}
+                className={`block w-full text-left text-lg font-medium hover:text-ai-primary transition-colors py-2 ${isActive('/ai-journey') ? 'text-ai-primary font-semibold' : 'text-foreground'}`}
               >
                 AI Journey
-              </button>
-              <button
-                onClick={() => handleNavClick('#services')}
-                className="block w-full text-left text-lg font-medium text-foreground hover:text-ai-primary transition-colors py-2"
+              </Link>
+              <Link
+                to="/services"
+                onClick={handleNavClick}
+                className={`block w-full text-left text-lg font-medium hover:text-ai-primary transition-colors py-2 ${isActive('/services') ? 'text-ai-primary font-semibold' : 'text-foreground'}`}
               >
                 Services
-              </button>
-              <button
-                onClick={() => handleNavClick('#about')}
-                className="block w-full text-left text-lg font-medium text-foreground hover:text-ai-primary transition-colors py-2"
+              </Link>
+              <Link
+                to="/about"
+                onClick={handleNavClick}
+                className={`block w-full text-left text-lg font-medium hover:text-ai-primary transition-colors py-2 ${isActive('/about') ? 'text-ai-primary font-semibold' : 'text-foreground'}`}
               >
                 About
-              </button>
-              <button
-                onClick={() => handleNavClick('#contact')}
-                className="block w-full text-left text-lg font-medium text-foreground hover:text-ai-primary transition-colors py-2"
+              </Link>
+              <Link
+                to="/contact"
+                onClick={handleNavClick}
+                className={`block w-full text-left text-lg font-medium hover:text-ai-primary transition-colors py-2 ${isActive('/contact') ? 'text-ai-primary font-semibold' : 'text-foreground'}`}
               >
                 Contact
-              </button>
+              </Link>
             </div>
 
             {/* Contact Info */}
@@ -132,12 +132,11 @@ const MobileMenu = ({ onContactClick }: MobileMenuProps) => {
 
           {/* CTA Button */}
           <div className="p-6 border-t border-border">
-            <Button 
-              onClick={handleContactClick}
-              className="w-full btn-hero"
-            >
-              Launch Your Vision
-            </Button>
+            <Link to="/contact" onClick={handleNavClick}>
+              <Button className="w-full btn-hero">
+                Launch Your Vision
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
