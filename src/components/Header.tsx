@@ -14,12 +14,12 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-6">
         {/* Main navigation */}
-        <div className="flex items-center justify-between py-3 md:py-4">
+        <div className="flex items-center justify-between py-1 md:py-2">
           <Link to="/" className="flex items-center">
             <img 
               src={logo} 
               alt="GrowonsmediaAI" 
-              className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto transition-all duration-300 hover:scale-105 drop-shadow-lg hover:drop-shadow-xl"
+              className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto transition-all duration-300 hover:scale-105 drop-shadow-lg hover:drop-shadow-xl"
             />
           </Link>
           
