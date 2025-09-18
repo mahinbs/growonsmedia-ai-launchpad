@@ -2,9 +2,17 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, Code, Smartphone, Globe, Zap, Shield, Rocket } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import ContactForm from "@/components/ContactForm";
 
 const WebDevelopment = () => {
   const navigate = useNavigate();
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   const features = [
     {
@@ -76,7 +84,7 @@ const WebDevelopment = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
                   className="btn-hero group"
-                  onClick={() => navigate('/contact')}
+                  onClick={scrollToContact}
                 >
                   Start Your Project
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -177,7 +185,7 @@ const WebDevelopment = () => {
 
               <Button 
                 className="btn-hero group mt-8"
-                onClick={() => navigate('/contact')}
+                onClick={scrollToContact}
               >
                 Get Started Today
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -243,7 +251,7 @@ const WebDevelopment = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 className="btn-hero group"
-                onClick={() => navigate('/contact')}
+                onClick={scrollToContact}
               >
                 Start Your Project
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -259,6 +267,13 @@ const WebDevelopment = () => {
           </div>
         </div>
       </section>
+
+      {/* Contact Form Section */}
+      <ContactForm 
+        title="Ready to Build Your Web Presence?"
+        subtitle="Let's discuss your project and create a web solution that drives your business forward"
+        defaultService="web-development"
+      />
     </div>
   );
 };

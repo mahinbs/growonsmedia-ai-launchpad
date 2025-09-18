@@ -2,9 +2,17 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, Smartphone, Tablet, Monitor, Zap, Users, Database } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import ContactForm from "@/components/ContactForm";
 
 const AppDevelopment = () => {
   const navigate = useNavigate();
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   const features = [
     {
@@ -99,7 +107,7 @@ const AppDevelopment = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
                   className="btn-hero group"
-                  onClick={() => navigate('/contact')}
+                  onClick={scrollToContact}
                 >
                   Build Your App
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -277,7 +285,7 @@ const AppDevelopment = () => {
 
               <Button 
                 className="btn-hero group mt-8"
-                onClick={() => navigate('/contact')}
+                onClick={scrollToContact}
               >
                 Start Your App Project
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -300,7 +308,7 @@ const AppDevelopment = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 className="btn-hero group"
-                onClick={() => navigate('/contact')}
+                onClick={scrollToContact}
               >
                 Get Started Today
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -316,6 +324,13 @@ const AppDevelopment = () => {
           </div>
         </div>
       </section>
+
+      {/* Contact Form Section */}
+      <ContactForm 
+        title="Ready to Launch Your App Idea?"
+        subtitle="Let's turn your app concept into reality with our expert development team"
+        defaultService="app-development"
+      />
     </div>
   );
 };
