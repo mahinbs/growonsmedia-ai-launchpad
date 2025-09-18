@@ -3,6 +3,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ArrowRight, Smartphone, Tablet, Monitor, Zap, Users, Database } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import ContactForm from "@/components/ContactForm";
+import appHeroImage from "@/assets/app-development-hero.jpg";
+import appTechBg from "@/assets/app-tech-bg.jpg";
 
 const AppDevelopment = () => {
   const navigate = useNavigate();
@@ -84,8 +86,17 @@ const AppDevelopment = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center bg-gradient-hero">
-        <div className="container mx-auto px-6">
+      <section className="min-h-screen flex items-center relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={appTechBg} 
+            alt="Mobile app technology background" 
+            className="w-full h-full object-cover opacity-5"
+          />
+          <div className="absolute inset-0 bg-gradient-hero"></div>
+        </div>
+        <div className="container mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 fade-in">
               <div className="space-y-4">
@@ -124,28 +135,23 @@ const AppDevelopment = () => {
             </div>
 
             <div className="relative float">
-              <div className="bg-gradient-accent rounded-2xl p-8 shadow-glow">
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="bg-white/10 rounded-lg p-6 backdrop-blur-sm text-center">
-                    <div className="text-4xl mb-2">📱</div>
-                    <h3 className="text-white font-semibold">iOS</h3>
-                    <p className="text-white/80 text-sm">Native Swift Apps</p>
-                  </div>
-                  <div className="bg-white/10 rounded-lg p-6 backdrop-blur-sm text-center">
-                    <div className="text-4xl mb-2">🤖</div>
-                    <h3 className="text-white font-semibold">Android</h3>
-                    <p className="text-white/80 text-sm">Kotlin & Java</p>
-                  </div>
-                  <div className="bg-white/10 rounded-lg p-6 backdrop-blur-sm text-center">
-                    <div className="text-4xl mb-2">🔄</div>
-                    <h3 className="text-white font-semibold">Cross-Platform</h3>
-                    <p className="text-white/80 text-sm">React Native & Flutter</p>
-                  </div>
-                  <div className="bg-white/10 rounded-lg p-6 backdrop-blur-sm text-center">
-                    <div className="text-4xl mb-2">💻</div>
-                    <h3 className="text-white font-semibold">Desktop</h3>
-                    <p className="text-white/80 text-sm">Electron & .NET</p>
-                  </div>
+              <div className="relative">
+                <img 
+                  src={appHeroImage} 
+                  alt="Mobile app development workspace with devices and interfaces" 
+                  className="w-full h-auto rounded-2xl shadow-glow"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ai-accent/30 to-transparent rounded-2xl"></div>
+                
+                {/* Floating Device Icons */}
+                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg">
+                  <Smartphone className="w-6 h-6 text-ai-primary" />
+                </div>
+                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg">
+                  <Tablet className="w-6 h-6 text-ai-secondary" />
+                </div>
+                <div className="absolute top-1/2 right-8 bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg transform -translate-y-1/2">
+                  <Monitor className="w-6 h-6 text-ai-accent" />
                 </div>
               </div>
             </div>
@@ -186,8 +192,12 @@ const AppDevelopment = () => {
       </section>
 
       {/* Platforms Section */}
-      <section className="py-20 bg-ai-glow">
-        <div className="container mx-auto px-6">
+      <section className="py-20 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0 bg-gradient-to-br from-ai-accent/20 to-ai-primary/20"></div>
+        </div>
+        <div className="container mx-auto px-6 relative z-10">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold">
               <span className="gradient-text">Multi-Platform</span> Expertise

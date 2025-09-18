@@ -3,6 +3,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ArrowRight, Code, Smartphone, Globe, Zap, Shield, Rocket } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import ContactForm from "@/components/ContactForm";
+import webHeroImage from "@/assets/web-development-hero.jpg";
+import webTechBg from "@/assets/web-tech-bg.jpg";
 
 const WebDevelopment = () => {
   const navigate = useNavigate();
@@ -61,8 +63,17 @@ const WebDevelopment = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center bg-gradient-hero">
-        <div className="container mx-auto px-6">
+      <section className="min-h-screen flex items-center relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={webTechBg} 
+            alt="Web technology background" 
+            className="w-full h-full object-cover opacity-5"
+          />
+          <div className="absolute inset-0 bg-gradient-hero"></div>
+        </div>
+        <div className="container mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 fade-in">
               <div className="space-y-4">
@@ -101,28 +112,23 @@ const WebDevelopment = () => {
             </div>
 
             <div className="relative float">
-              <div className="bg-gradient-primary rounded-2xl p-8 shadow-glow">
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                    <Code className="w-8 h-8 text-white mb-2" />
-                    <h3 className="text-white font-semibold">Frontend</h3>
-                    <p className="text-white/80 text-sm">React, Vue, Angular</p>
-                  </div>
-                  <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                    <Globe className="w-8 h-8 text-white mb-2" />
-                    <h3 className="text-white font-semibold">Backend</h3>
-                    <p className="text-white/80 text-sm">Node.js, Python, PHP</p>
-                  </div>
-                  <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                    <Zap className="w-8 h-8 text-white mb-2" />
-                    <h3 className="text-white font-semibold">Database</h3>
-                    <p className="text-white/80 text-sm">MongoDB, PostgreSQL</p>
-                  </div>
-                  <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                    <Shield className="w-8 h-8 text-white mb-2" />
-                    <h3 className="text-white font-semibold">Cloud</h3>
-                    <p className="text-white/80 text-sm">AWS, Vercel, Netlify</p>
-                  </div>
+              <div className="relative">
+                <img 
+                  src={webHeroImage} 
+                  alt="Modern web development workspace with code and designs" 
+                  className="w-full h-auto rounded-2xl shadow-glow"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ai-primary/30 to-transparent rounded-2xl"></div>
+                
+                {/* Floating Tech Icons */}
+                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg">
+                  <Code className="w-6 h-6 text-ai-primary" />
+                </div>
+                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg">
+                  <Globe className="w-6 h-6 text-ai-secondary" />
+                </div>
+                <div className="absolute top-1/2 right-8 bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg transform -translate-y-1/2">
+                  <Zap className="w-6 h-6 text-ai-accent" />
                 </div>
               </div>
             </div>
@@ -163,8 +169,12 @@ const WebDevelopment = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-ai-glow">
-        <div className="container mx-auto px-6">
+      <section className="py-20 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0 bg-gradient-to-br from-ai-primary/20 to-ai-secondary/20"></div>
+        </div>
+        <div className="container mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h2 className="text-3xl sm:text-4xl font-bold">
