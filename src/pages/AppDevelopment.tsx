@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ArrowRight, Smartphone, Tablet, Monitor, Zap, Users, Database } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import ContactForm from "@/components/ContactForm";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import appHeroImage from "@/assets/app-development-hero.jpg";
 import appTechBg from "@/assets/app-tech-bg.jpg";
 
@@ -334,6 +335,9 @@ const AppDevelopment = () => {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <TestimonialsSection variant="compact" />
 
       {/* Contact Form Section */}
       <ContactForm 
