@@ -112,7 +112,7 @@ const TrustSection = () => {
       <div className="container mx-auto px-6">
         {/* Animated Counters */}
         <div className="text-center mb-16">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-7xl mb-8 sm:mb-12 px-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-6xl mb-8 sm:mb-12 px-4">
             Trusted by <span className="gradient-text">Industry Leaders</span>
           </h2>
           

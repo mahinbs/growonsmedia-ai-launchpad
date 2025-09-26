@@ -87,7 +87,7 @@ const AIJourneySection = () => {
     <section id="journey" ref={sectionRef} className="py-32 bg-muted/30 overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20 fade-in">
-          <h2 className="text-4xl lg:text-7xl mb-6 max-w-4xl mx-auto">
+          <h2 className="text-4xl lg:text-6xl mb-6 max-w-4xl mx-auto">
             From Vision to Reality: Your{" "}
             <span className="gradient-text">3-Step AI-Transformation</span> Journey
           </h2>

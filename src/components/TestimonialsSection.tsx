@@ -131,7 +131,7 @@ const TestimonialsSection = ({ variant = "default" }: TestimonialProps) => {
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center space-y-4 mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-7xl text-white">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl text-white">
             What Our <span className="gradient-text">Clients Say</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">

@@ -42,7 +42,7 @@ const ServicesSection = () => {
     <section id="services" className="py-24">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12 sm:mb-16 fade-in px-4">
-          <h2 className="text-3xl sm:text-4xl lg:text-7xl mb-4 sm:mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-6xl mb-4 sm:mb-6">
             Our <span className="gradient-text">AI-Powered</span> Services
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">

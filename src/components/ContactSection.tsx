@@ -146,7 +146,7 @@ const ContactSection = () => {
     <section id="contact" className="py-12 sm:py-16 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16 fade-in">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-7xl mb-4 sm:mb-6 px-4 leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-6xl mb-4 sm:mb-6 px-4 leading-tight">
             Ready to <span className="gradient-text">Launch Your Vision</span>?
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto px-4 leading-relaxed">
