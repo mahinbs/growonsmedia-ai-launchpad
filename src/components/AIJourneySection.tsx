@@ -87,7 +87,7 @@ const AIJourneySection = () => {
     <section id="journey" ref={sectionRef} className="py-32 bg-muted/30 overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20 fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-4xl lg:text-6xl mb-6 max-w-4xl mx-auto">
             From Vision to Reality: Your{" "}
             <span className="gradient-text">3-Step AI-Transformation</span> Journey
           </h2>
@@ -122,7 +122,7 @@ const AIJourneySection = () => {
                 onClick={() => setActiveStep(index)}
               >
                 {/* AED Letter Emphasis */}
-                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-bold transition-all duration-300 ${
+                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-2xl transition-all duration-300 ${
                   activeStep === index 
                     ? 'bg-gradient-primary text-white shadow-glow' 
                     : 'bg-muted text-muted-foreground'
@@ -131,7 +131,7 @@ const AIJourneySection = () => {
                 </div>
                 
                 <div className="flex-1">
-                  <h3 className={`text-2xl font-bold mb-2 transition-all duration-500 ${
+                  <h3 className={`text-2xl mb-2 transition-all duration-500 ${
                     activeStep === index ? 'gradient-text' : 'text-foreground'
                   }`}>
                     {step.title}
@@ -140,7 +140,7 @@ const AIJourneySection = () => {
                 </div>
 
                 {/* Step Number */}
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-500 ${
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm transition-all duration-500 ${
                   activeStep >= index 
                     ? 'bg-ai-primary text-white' 
                     : 'bg-muted text-muted-foreground'
@@ -197,7 +197,7 @@ const AIJourneySection = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="space-y-6"
               >
-                <h3 className="text-3xl font-bold gradient-text">
+                <h3 className="text-3xl gradient-text">
                   {steps[activeStep].title}
                 </h3>
                 <p className="text-lg text-muted-foreground leading-relaxed max-w-lg mx-auto">

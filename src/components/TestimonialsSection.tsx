@@ -69,7 +69,7 @@ const TestimonialsSection = ({ variant = "default" }: TestimonialProps) => {
   };
 
   return (
-    <section className="py-20 bg-ai-glow relative overflow-hidden">
+    <section id="testimonials" className="py-20 bg-ai-glow relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-gradient-to-br from-ai-primary/10 to-ai-secondary/10"></div>

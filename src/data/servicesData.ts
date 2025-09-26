@@ -48,7 +48,7 @@ export const servicesData: ServiceData[] = [
     description: "Custom web solutions built with modern frameworks",
     technologies: ["React", "Next.js", "TypeScript", "Node.js"],
     features: ["Responsive Design", "Performance Optimized", "SEO Ready", "Progressive Web App"],
-    accentColor: "#14b8a6",
+    accentColor: "#43946B",
     detailedDescription: "Transform your business with custom web applications that deliver exceptional user experiences. Our team specializes in building scalable, performance-optimized web solutions using cutting-edge technologies like React, Next.js, and TypeScript. From simple business websites to complex enterprise applications, we deliver solutions that grow with your business.",
     process: [
       "Requirements Analysis & Planning",
@@ -91,7 +91,7 @@ export const servicesData: ServiceData[] = [
     technologies: ["React Native", "Flutter", "iOS", "Android"],
     features: ["Cross Platform", "Native Performance", "App Store Ready", "Push Notifications"],
     isPopular: true,
-    accentColor: "#8b5cf6",
+    accentColor: "#43946B",
     detailedDescription: "Reach your customers wherever they are with powerful mobile applications. We develop both native and cross-platform mobile apps that deliver exceptional performance and user experience. Our mobile solutions include push notifications, offline functionality, and seamless integration with your existing systems.",
     process: [
       "Market Research & Strategy",
@@ -134,7 +134,7 @@ export const servicesData: ServiceData[] = [
     technologies: ["AWS", "Azure", "Microservices", "Docker"],
     features: ["Multi-tenant", "Auto Scaling", "Subscription Management", "Analytics Dashboard"],
     isPopular: true,
-    accentColor: "#3b82f6",
+    accentColor: "#43946B",
     detailedDescription: "Build and launch your SaaS product with our comprehensive development services. We create scalable, multi-tenant platforms with built-in subscription management, analytics, and enterprise-grade security. Our SaaS solutions are designed to grow from startup to enterprise scale.",
     process: [
       "Business Model Analysis",
@@ -176,7 +176,7 @@ export const servicesData: ServiceData[] = [
     description: "Decentralized applications and smart contracts",
     technologies: ["Ethereum", "Solidity", "Web3", "IPFS"],
     features: ["Smart Contracts", "DeFi Integration", "NFT Marketplace", "Token Economics"],
-    accentColor: "#f59e0b",
+    accentColor: "#43946B",
     detailedDescription: "Enter the future of decentralized applications with our blockchain development services. We build secure smart contracts, DeFi protocols, NFT marketplaces, and custom blockchain solutions. Our team ensures security, scalability, and compliance with industry best practices.",
     process: [
       "Blockchain Strategy & Consultation",
@@ -218,7 +218,7 @@ export const servicesData: ServiceData[] = [
     description: "Immersive augmented and virtual reality experiences",
     technologies: ["Unity", "Unreal Engine", "ARKit", "ARCore"],
     features: ["3D Modeling", "Spatial Computing", "Hand Tracking", "Cross-platform VR"],
-    accentColor: "#10b981",
+    accentColor: "#43946B",
     detailedDescription: "Create immersive experiences that blur the line between digital and physical worlds. Our AR/VR development services cover everything from training simulations to interactive marketing experiences. We leverage cutting-edge technologies to deliver engaging, high-performance immersive applications.",
     process: [
       "Concept Design & Storyboarding",
@@ -260,7 +260,7 @@ export const servicesData: ServiceData[] = [
     description: "Connected devices and IoT ecosystems",
     technologies: ["Arduino", "Raspberry Pi", "AWS IoT", "MQTT"],
     features: ["Sensor Integration", "Real-time Data", "Remote Monitoring", "Edge Computing"],
-    accentColor: "#f97316",
+    accentColor: "#43946B",
     detailedDescription: "Connect your physical world to the digital realm with our IoT development services. We create comprehensive IoT ecosystems including device firmware, cloud infrastructure, and mobile applications for monitoring and control. Our solutions enable real-time data collection, analysis, and automated responses.",
     process: [
       "IoT Architecture Design",
@@ -302,7 +302,7 @@ export const servicesData: ServiceData[] = [
     description: "Engaging games for multiple platforms",
     technologies: ["Unity", "Unreal Engine", "C#", "JavaScript"],
     features: ["2D/3D Games", "Multiplayer", "In-app Purchases", "Cross-platform"],
-    accentColor: "#ec4899",
+    accentColor: "#43946B",
     detailedDescription: "Bring your game ideas to life with our comprehensive game development services. From casual mobile games to complex PC and console titles, we create engaging experiences that captivate players. Our games feature stunning graphics, smooth gameplay, and monetization strategies that drive success.",
     process: [
       "Game Design & Concept Art",
@@ -345,7 +345,7 @@ export const servicesData: ServiceData[] = [
     technologies: ["Python", "TensorFlow", "OpenAI", "Zapier"],
     features: ["Process Automation", "ML Models", "RPA", "Workflow Optimization"],
     isPopular: true,
-    accentColor: "#06b6d4",
+    accentColor: "#43946B",
     detailedDescription: "Transform your business operations with intelligent automation powered by AI and machine learning. Our automation solutions reduce manual work, eliminate errors, and increase efficiency across your organization. From simple task automation to complex AI-driven decision making systems.",
     process: [
       "Process Analysis & Mapping",
@@ -387,7 +387,7 @@ export const servicesData: ServiceData[] = [
     description: "AI-powered voice assistants and call automation",
     technologies: ["Voice AI", "NLP", "Twilio", "Speech Recognition"],
     features: ["Voice Bots", "Call Analytics", "Lead Qualification", "24/7 Availability"],
-    accentColor: "#6366f1",
+    accentColor: "#43946B",
     detailedDescription: "Revolutionize your customer communications with AI-powered voice assistants. Our AI calling solutions handle customer service, lead qualification, appointment scheduling, and sales calls with natural conversation capabilities. Available 24/7 and capable of handling unlimited concurrent calls.",
     process: [
       "Voice Strategy & Script Design",
@@ -429,7 +429,7 @@ export const servicesData: ServiceData[] = [
     description: "Custom AI solutions and machine learning models",
     technologies: ["Python", "PyTorch", "OpenAI", "LangChain"],
     features: ["Custom AI Models", "ML Pipeline", "AI Integration", "Model Training"],
-    accentColor: "#059669",
+    accentColor: "#43946B",
     detailedDescription: "Harness the power of artificial intelligence with custom AI solutions tailored to your business needs. From computer vision to natural language processing, we develop sophisticated AI models that solve complex business challenges and provide intelligent insights from your data.",
     process: [
       "AI Strategy & Use Case Analysis",
@@ -471,7 +471,7 @@ export const servicesData: ServiceData[] = [
     description: "Intelligent conversational AI for customer support",
     technologies: ["Dialogflow", "Rasa", "GPT-4", "WhatsApp API"],
     features: ["Multi-channel", "Natural Language", "Integration Ready", "Analytics"],
-    accentColor: "#8b5cf6",
+    accentColor: "#43946B",
     detailedDescription: "Enhance your customer service with intelligent chatbots that provide instant, accurate responses 24/7. Our chatbots integrate seamlessly with your existing systems and can handle complex conversations across multiple channels including websites, WhatsApp, Facebook Messenger, and more.",
     process: [
       "Conversation Design",
@@ -513,7 +513,7 @@ export const servicesData: ServiceData[] = [
     description: "Beautiful and intuitive user experiences",
     technologies: ["Figma", "Adobe XD", "Sketch", "Prototyping"],
     features: ["User Research", "Wireframing", "Prototyping", "Design Systems"],
-    accentColor: "#ec4899",
+    accentColor: "#43946B",
     detailedDescription: "Create stunning user experiences that drive engagement and conversions. Our UI/UX design services combine user research, psychology, and cutting-edge design principles to create interfaces that users love. From wireframes to high-fidelity prototypes, we ensure every interaction is intuitive and delightful.",
     process: [
       "User Research & Analysis",
@@ -555,7 +555,7 @@ export const servicesData: ServiceData[] = [
     description: "Business intelligence and data-driven insights",
     technologies: ["Python", "Tableau", "Power BI", "SQL"],
     features: ["Data Visualization", "Predictive Analytics", "Real-time Dashboards", "ETL Pipeline"],
-    accentColor: "#3b82f6",
+    accentColor: "#43946B",
     detailedDescription: "Turn your data into actionable insights with our comprehensive analytics solutions. We help you collect, process, and analyze data to make informed business decisions. Our services include data warehousing, real-time dashboards, predictive analytics, and custom reporting solutions.",
     process: [
       "Data Assessment & Strategy",
@@ -597,7 +597,7 @@ export const servicesData: ServiceData[] = [
     description: "Scalable cloud infrastructure and deployment",
     technologies: ["AWS", "Azure", "GCP", "Kubernetes"],
     features: ["Auto Scaling", "Load Balancing", "Disaster Recovery", "Cost Optimization"],
-    accentColor: "#10b981",
+    accentColor: "#43946B",
     detailedDescription: "Modernize your infrastructure with secure, scalable cloud solutions. We help businesses migrate to the cloud, optimize costs, and implement best practices for security and performance. Our cloud services ensure your applications are always available, secure, and performing at their best.",
     process: [
       "Cloud Strategy & Assessment",

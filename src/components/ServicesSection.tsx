@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { servicesData, ServiceData } from "@/data/servicesData";
 import ServiceDetailModal from "./ServiceDetailModal";
 import { DollarSign, Clock } from "lucide-react";
+import { scroller } from "react-scroll";
 
 const ServicesSection = () => {
   const [selectedService, setSelectedService] = useState<ServiceData | null>(null);
@@ -19,10 +20,14 @@ const ServicesSection = () => {
 
   const handleGetQuote = (serviceTitle: string) => {
     // Check if we're on the home page with contact section
-    const contactSection = document.getElementById('contact');
-    if (contactSection && location.pathname === '/') {
-      // Scroll to contact section on same page
-      contactSection.scrollIntoView({ behavior: 'smooth' });
+    if (location.pathname === '/') {
+      // Scroll to contact section on same page using react-scroll
+      scroller.scrollTo('contact', {
+        duration: 1000,
+        delay: 0,
+        smooth: "easeInOutQuart",
+        offset: -80, // Account for fixed header height
+      });
       
       // Dispatch custom event to pre-select service in contact form
       window.dispatchEvent(new CustomEvent('preSelectService', { 

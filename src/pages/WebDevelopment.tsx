@@ -6,15 +6,18 @@ import ContactForm from "@/components/ContactForm";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import webHeroImage from "@/assets/web-development-hero.jpg";
 import webTechBg from "@/assets/web-tech-bg.jpg";
+import { scroller } from "react-scroll";
 
 const WebDevelopment = () => {
   const navigate = useNavigate();
 
   const scrollToContact = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    scroller.scrollTo('contact', {
+      duration: 1000,
+      delay: 0,
+      smooth: "easeInOutQuart",
+      offset: -80, // Account for fixed header height
+    });
   };
 
   const features = [

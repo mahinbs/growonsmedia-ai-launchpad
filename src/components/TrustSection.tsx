@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Users, FolderOpen, Calendar, Linkedin, Twitter, Instagram, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { scroller } from "react-scroll";
 
 const TrustSection = () => {
   const [counters, setCounters] = useState({
@@ -173,7 +174,12 @@ const TrustSection = () => {
           
           <Button 
             className="btn-hero text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => scroller.scrollTo('contact', {
+              duration: 1000,
+              delay: 0,
+              smooth: "easeInOutQuart",
+              offset: -80, // Account for fixed header height
+            })}
           >
             Start Your AI Journey Today
           </Button>
