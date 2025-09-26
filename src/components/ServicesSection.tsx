@@ -2,14 +2,12 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { servicesData, ServiceData } from "@/data/servicesData";
 import { scroller } from "react-scroll";
-import { CheckCircle, X } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 
 const ServicesSection = () => {
   const [activeService, setActiveService] = useState<ServiceData>(servicesData[0]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -38,7 +36,6 @@ const ServicesSection = () => {
 
   const handleViewDetails = (service: ServiceData) => {
     setActiveService(service);
-    setIsModalOpen(true);
   };
 
   return (
@@ -135,21 +132,10 @@ const ServicesSection = () => {
               </div>
             </div>
 
-            {/* Action Buttons */}
-            <div className="flex gap-3">
-              {/* <Button 
-                variant="outline"
-                className="flex-1 text-sm font-medium transition-all duration-300 hover:scale-105"
-                style={{ 
-                  borderColor: activeService.accentColor,
-                  color: activeService.accentColor
-                }}
-                onClick={() => handleViewDetails(activeService)}
-              >
-                View Details
-              </Button> */}
+            {/* Action Button */}
+            <div className="flex">
               <Button 
-                className="text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg w-fit"
+                className="w-fit text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 style={{ 
                   backgroundColor: activeService.accentColor,
                   boxShadow: `0 4px 15px ${activeService.accentColor}40`
@@ -162,114 +148,6 @@ const ServicesSection = () => {
           </div>
         </div>
       </div>
-
-      {/* Service Details Modal */}
-      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-card/95 backdrop-blur-sm border border-white/20">
-          <DialogHeader className="flex flex-row items-center justify-between">
-            <DialogTitle className="text-2xl font-bold flex items-center">
-              <div 
-                className="w-8 h-8 rounded-full flex items-center justify-center mr-3"
-                style={{ backgroundColor: `${activeService.accentColor}20` }}
-              >
-                <activeService.icon 
-                  className="w-5 h-5" 
-                  style={{ color: activeService.accentColor }} 
-                />
-              </div>
-              {activeService.title}
-            </DialogTitle>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsModalOpen(false)}
-              className="text-muted-foreground hover:text-foreground"
-            >
-              <X className="w-4 h-4" />
-            </Button>
-          </DialogHeader>
-
-          <div className="space-y-6">
-            {/* Service Description */}
-            <div>
-              <h3 className="text-lg font-semibold mb-3" style={{ color: activeService.accentColor }}>
-                About This Service
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {activeService.detailedDescription}
-              </p>
-            </div>
-
-            {/* Key Features */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4" style={{ color: activeService.accentColor }}>
-                Key Features
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {activeService.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-start">
-                    <CheckCircle 
-                      className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5" 
-                      style={{ color: activeService.accentColor }} 
-                    />
-                    <span className="text-muted-foreground">{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Technologies */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4" style={{ color: activeService.accentColor }}>
-                Technologies & Tools
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {activeService.technologies.map((tech, techIndex) => (
-                  <Badge 
-                    key={techIndex} 
-                    variant="secondary" 
-                    className="text-sm border-0"
-                    style={{ 
-                      backgroundColor: `${activeService.accentColor}20`,
-                      color: activeService.accentColor
-                    }}
-                  >
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex gap-3 pt-4 border-t border-white/10">
-              <Button 
-                variant="outline"
-                className="flex-1"
-                style={{ 
-                  borderColor: activeService.accentColor,
-                  color: activeService.accentColor
-                }}
-                onClick={() => setIsModalOpen(false)}
-              >
-                Close
-              </Button>
-              <Button 
-                className="flex-1 text-white font-semibold"
-                style={{ 
-                  backgroundColor: activeService.accentColor,
-                  boxShadow: `0 4px 15px ${activeService.accentColor}40`
-                }}
-                onClick={() => {
-                  setIsModalOpen(false);
-                  handleGetQuote(activeService.title);
-                }}
-              >
-                Get Quote
-              </Button>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
     </section>
   );
 };
