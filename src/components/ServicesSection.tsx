@@ -149,7 +149,7 @@ const ServicesSection = () => {
                 View Details
               </Button> */}
               <Button 
-                className="flex-1 text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                className="text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg w-fit"
                 style={{ 
                   backgroundColor: activeService.accentColor,
                   boxShadow: `0 4px 15px ${activeService.accentColor}40`
