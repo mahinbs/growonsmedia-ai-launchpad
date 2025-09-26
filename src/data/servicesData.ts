@@ -1,3 +1,4 @@
+import React from "react";
 import { 
   Globe, 
   Smartphone, 
@@ -17,7 +18,7 @@ import {
 
 export interface ServiceData {
   id: string;
-  icon: any;
+  icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
   title: string;
   description: string;
   technologies: string[];
@@ -25,8 +26,6 @@ export interface ServiceData {
   detailedDescription: string;
   process: string[];
   deliverables: string[];
-  timeline: string;
-  startingPrice: string;
   isPopular?: boolean;
   accentColor: string;
   caseStudy?: {
@@ -65,8 +64,6 @@ export const servicesData: ServiceData[] = [
       "Admin panel (if applicable)",
       "Training & support materials"
     ],
-    timeline: "4-12 weeks",
-    startingPrice: "$5,000",
     caseStudy: {
       title: "E-commerce Platform for Retail Chain",
       description: "Built a comprehensive e-commerce platform that increased online sales by 300%",
@@ -108,8 +105,6 @@ export const servicesData: ServiceData[] = [
       "Analytics integration",
       "User documentation"
     ],
-    timeline: "6-16 weeks",
-    startingPrice: "$10,000",
     caseStudy: {
       title: "Fitness Tracking App",
       description: "Developed a comprehensive fitness app with AI-powered workout recommendations",
@@ -151,8 +146,6 @@ export const servicesData: ServiceData[] = [
       "API documentation",
       "Deployment & monitoring setup"
     ],
-    timeline: "12-24 weeks",
-    startingPrice: "$25,000",
     caseStudy: {
       title: "Project Management SaaS",
       description: "Built a comprehensive project management platform serving 10,000+ users",
@@ -193,8 +186,6 @@ export const servicesData: ServiceData[] = [
       "Token economics design",
       "Documentation & guides"
     ],
-    timeline: "8-20 weeks",
-    startingPrice: "$15,000",
     caseStudy: {
       title: "DeFi Lending Platform",
       description: "Created a decentralized lending protocol with $50M+ TVL",
@@ -235,8 +226,6 @@ export const servicesData: ServiceData[] = [
       "User interaction guides",
       "Performance optimization"
     ],
-    timeline: "10-18 weeks",
-    startingPrice: "$20,000",
     caseStudy: {
       title: "Virtual Training Platform",
       description: "Developed VR training simulation reducing training time by 60%",
@@ -277,8 +266,6 @@ export const servicesData: ServiceData[] = [
       "Real-time dashboards",
       "Data analytics tools"
     ],
-    timeline: "12-20 weeks",
-    startingPrice: "$18,000",
     caseStudy: {
       title: "Smart Factory Solution",
       description: "Implemented IoT system reducing energy costs by 40%",
@@ -319,8 +306,6 @@ export const servicesData: ServiceData[] = [
       "Analytics & tracking",
       "Publishing assistance"
     ],
-    timeline: "16-30 weeks",
-    startingPrice: "$30,000",
     caseStudy: {
       title: "Mobile Puzzle Game",
       description: "Created viral puzzle game with 5M+ downloads",
@@ -362,8 +347,6 @@ export const servicesData: ServiceData[] = [
       "Performance dashboards",
       "Training & documentation"
     ],
-    timeline: "6-14 weeks",
-    startingPrice: "$12,000",
     caseStudy: {
       title: "Invoice Processing Automation",
       description: "Automated invoice processing reducing manual work by 90%",
@@ -404,8 +387,6 @@ export const servicesData: ServiceData[] = [
       "CRM integration",
       "Training & support"
     ],
-    timeline: "4-10 weeks",
-    startingPrice: "$8,000",
     caseStudy: {
       title: "Lead Qualification System",
       description: "AI caller qualified 500+ leads monthly with 85% accuracy",
@@ -446,8 +427,6 @@ export const servicesData: ServiceData[] = [
       "Performance metrics",
       "Documentation & guides"
     ],
-    timeline: "8-16 weeks",
-    startingPrice: "$15,000",
     caseStudy: {
       title: "Predictive Maintenance AI",
       description: "AI model predicting equipment failures with 95% accuracy",
@@ -488,8 +467,6 @@ export const servicesData: ServiceData[] = [
       "Analytics & reporting",
       "Training materials"
     ],
-    timeline: "4-8 weeks",
-    startingPrice: "$6,000",
     caseStudy: {
       title: "E-commerce Support Bot",
       description: "Chatbot handling 80% of customer queries automatically",
@@ -530,8 +507,6 @@ export const servicesData: ServiceData[] = [
       "User journey maps",
       "Design specifications"
     ],
-    timeline: "4-12 weeks",
-    startingPrice: "$5,000",
     caseStudy: {
       title: "SaaS Platform Redesign",
       description: "Redesigned platform increasing user engagement by 150%",
@@ -572,8 +547,6 @@ export const servicesData: ServiceData[] = [
       "Predictive models",
       "Documentation & training"
     ],
-    timeline: "6-12 weeks",
-    startingPrice: "$10,000",
     caseStudy: {
       title: "Retail Analytics Platform",
       description: "Analytics solution increasing sales insights and revenue by 25%",
@@ -614,8 +587,6 @@ export const servicesData: ServiceData[] = [
       "Monitoring & alerts",
       "Cost optimization plan"
     ],
-    timeline: "6-16 weeks",
-    startingPrice: "$12,000",
     caseStudy: {
       title: "Enterprise Cloud Migration",
       description: "Migrated enterprise systems reducing costs by 45%",

@@ -95,12 +95,13 @@ const HomeHeader = () => {
 
           {/* CTA Button */}
           <div className="flex items-center space-x-4">
-            {/* <Button 
-              className="hidden sm:flex btn-hero text-sm sm:text-base px-4 sm:px-8 py-1.5 sm:py-2"
+            <Button 
+              className="hidden sm:flex border border-white/40 text-sm sm:text-base px-4 sm:px-8 py-1.5 sm:py-2 rounded-full"
+              variant="outline"
               onClick={() => scrollToSection('contact')}
             >
               Launch Your Vision
-            </Button> */}
+            </Button>
 
             {/* Mobile Menu */}
             <HomeMobileMenu

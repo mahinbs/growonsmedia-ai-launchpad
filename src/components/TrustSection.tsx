@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Users, FolderOpen, Calendar, Linkedin, Twitter, Instagram, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { scroller } from "react-scroll";
 
 const TrustSection = () => {
+  const [isVisible, setIsVisible] = useState(false);
   const [counters, setCounters] = useState({
     clients: 0,
     projects: 0,
     years: 0
   });
+  const countersRef = useRef<HTMLDivElement>(null);
 
   const finalValues = {
     clients: 150,
@@ -16,7 +18,28 @@ const TrustSection = () => {
     years: 5
   };
 
+  // Intersection Observer for counter animation
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (countersRef.current) {
+      observer.observe(countersRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isVisible]);
+
+  // Counter animation
+  useEffect(() => {
+    if (!isVisible) return;
+
     const duration = 2000; // 2 seconds
     const steps = 60;
     const stepDuration = duration / steps;
@@ -62,11 +85,19 @@ const TrustSection = () => {
     return () => {
       Object.values(intervals).forEach(clearInterval);
     };
-  }, []);
+  }, [isVisible, finalValues.clients, finalValues.projects, finalValues.years]);
 
   const clientLogos = [
-    "TechCorp", "InnovateLab", "DataFlow", "CloudMax", "AI Solutions", 
-    "NextGen", "DigitalEdge", "SmartFlow", "FutureTech", "ProActive"
+    { name: "Brand 1", image: "/src/assets/brandlogos/1.png" },
+    { name: "Brand 2", image: "/src/assets/brandlogos/2.png" },
+    { name: "Brand 3", image: "/src/assets/brandlogos/3.png" },
+    { name: "Brand 4", image: "/src/assets/brandlogos/4.png" },
+    { name: "Brand 5", image: "/src/assets/brandlogos/5.png" },
+    { name: "Brand 6", image: "/src/assets/brandlogos/6.png" },
+    { name: "Brand 7", image: "/src/assets/brandlogos/7.png" },
+    { name: "Brand 8", image: "/src/assets/brandlogos/8.png" },
+    { name: "Brand 9", image: "/src/assets/brandlogos/9.png" },
+    { name: "Brand 10", image: "/src/assets/brandlogos/10.png" }
   ];
 
   const socialLinks = [
@@ -81,13 +112,13 @@ const TrustSection = () => {
       <div className="container mx-auto px-6">
         {/* Animated Counters */}
         <div className="text-center mb-16">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-8 sm:mb-12 px-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-7xl mb-8 sm:mb-12 px-4">
             Trusted by <span className="gradient-text">Industry Leaders</span>
           </h2>
           
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16 px-4">
+          <div ref={countersRef} className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16 px-4">
             <div className="text-center fade-in p-4 sm:p-0">
-              <div className="text-3xl sm:text-4xl font-bold gradient-text mb-2">{counters.clients}+</div>
+              <div className="text-3xl sm:text-5xl font-bold gradient-text mb-2">{counters.clients}+</div>
               <div className="flex items-center justify-center mb-2 flex-wrap">
                 <Users className="w-5 h-5 sm:w-6 sm:h-6 text-ai-primary mr-2" />
                 <span className="text-base sm:text-lg font-semibold">Happy Clients</span>
@@ -96,7 +127,7 @@ const TrustSection = () => {
             </div>
             
             <div className="text-center fade-in-delay-1 p-4 sm:p-0">
-              <div className="text-3xl sm:text-4xl font-bold gradient-text mb-2">{counters.projects}+</div>
+              <div className="text-3xl sm:text-5xl font-bold gradient-text mb-2">{counters.projects}+</div>
               <div className="flex items-center justify-center mb-2 flex-wrap">
                 <FolderOpen className="w-5 h-5 sm:w-6 sm:h-6 text-ai-primary mr-2" />
                 <span className="text-base sm:text-lg font-semibold">Projects Completed</span>
@@ -105,7 +136,7 @@ const TrustSection = () => {
             </div>
             
             <div className="text-center fade-in-delay-2 p-4 sm:p-0">
-              <div className="text-3xl sm:text-4xl font-bold gradient-text mb-2">{counters.years}+</div>
+              <div className="text-3xl sm:text-5xl font-bold gradient-text mb-2">{counters.years}+</div>
               <div className="flex items-center justify-center mb-2 flex-wrap">
                 <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-ai-primary mr-2" />
                 <span className="text-base sm:text-lg font-semibold">Years of Experience</span>
@@ -117,12 +148,16 @@ const TrustSection = () => {
 
         {/* Client Logos Carousel */}
         <div className="mb-16">
-          <h3 className="text-xl sm:text-2xl font-bold text-center mb-8">Trusted by Amazing Companies</h3>
+          <h3 className="text-xl sm:text-2xl font-bold text-center mb-8 text-white">Trusted by Amazing Companies</h3>
           <div className="relative overflow-hidden rounded-lg">
             <div className="flex space-x-6 sm:space-x-8 animate-scroll">
               {[...clientLogos, ...clientLogos].map((logo, index) => (
-                <div key={index} className="flex-shrink-0 bg-card border border-card-border rounded-lg px-4 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
-                  <div className="text-sm sm:text-lg font-semibold text-muted-foreground">{logo}</div>
+                <div key={index} className="flex-shrink-0 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-center">
+                  <img 
+                    src={logo.image} 
+                    alt={logo.name}
+                    className="h-8 sm:h-12 w-auto object-contain filter brightness-0 invert opacity-80 hover:opacity-100 transition-opacity duration-300"
+                  />
                 </div>
               ))}
             </div>

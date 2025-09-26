@@ -87,7 +87,7 @@ const AIJourneySection = () => {
     <section id="journey" ref={sectionRef} className="py-32 bg-muted/30 overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20 fade-in">
-          <h2 className="text-4xl lg:text-6xl mb-6 max-w-4xl mx-auto">
+          <h2 className="text-4xl lg:text-7xl mb-6 max-w-4xl mx-auto">
             From Vision to Reality: Your{" "}
             <span className="gradient-text">3-Step AI-Transformation</span> Journey
           </h2>
@@ -97,7 +97,7 @@ const AIJourneySection = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[80vh]">
+        <div className="grid lg:grid-cols-[30%,1fr] gap-16 items-center min-h-[80vh]">
           {/* Left Side - Step Navigation */}
           <div className="space-y-8">
             {steps.map((step, index) => (
@@ -136,17 +136,17 @@ const AIJourneySection = () => {
                   }`}>
                     {step.title}
                   </h3>
-                  <p className="text-muted-foreground">{step.description}</p>
+                  {/* <p className="text-muted-foreground">{step.description}</p> */}
                 </div>
 
                 {/* Step Number */}
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm transition-all duration-500 ${
+                {/* <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm transition-all duration-500 ${
                   activeStep >= index 
                     ? 'bg-ai-primary text-white' 
                     : 'bg-muted text-muted-foreground'
                 }`}>
                   {index + 1}
-                </div>
+                </div> */}
               </motion.div>
             ))}
           </div>
@@ -168,7 +168,7 @@ const AIJourneySection = () => {
                   transition={{ duration: 0.8, delay: 0.2 }}
                   className="relative"
                 >
-                  <div className="w-80 h-80 mx-auto rounded-3xl overflow-hidden bg-gradient-to-br from-ai-primary/20 to-ai-secondary/20 p-8 shadow-glow">
+                  <div className="w-80 h-80 mx-auto rounded-3xl overflow-hidden bg-gradient-to-br from-ai-primary/20 to-ai-secondary/20 shadow-glow">
                     <img 
                       src={steps[activeStep].image} 
                       alt={steps[activeStep].title}
