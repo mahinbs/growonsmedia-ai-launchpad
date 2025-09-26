@@ -137,7 +137,7 @@ const ServicesSection = () => {
 
             {/* Action Buttons */}
             <div className="flex gap-3">
-              <Button 
+              {/* <Button 
                 variant="outline"
                 className="flex-1 text-sm font-medium transition-all duration-300 hover:scale-105"
                 style={{ 
@@ -147,7 +147,7 @@ const ServicesSection = () => {
                 onClick={() => handleViewDetails(activeService)}
               >
                 View Details
-              </Button>
+              </Button> */}
               <Button 
                 className="flex-1 text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 style={{ 
