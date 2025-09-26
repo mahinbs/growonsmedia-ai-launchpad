@@ -87,7 +87,7 @@ const PortfolioSection = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {activeData.map((item: PortfolioItem) => (
             <div
-              key={item.id}
+              key={item.title}
               className="group service-card overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl"
               onMouseEnter={() => setHoveredItem(item.id)}
               onMouseLeave={() => setHoveredItem(null)}
