@@ -5,6 +5,7 @@
 @tailwind utilities;
 
 /* Growonsmedia Design System - AI-Driven, Futuristic, Professional */
+/* Variant 5: Navy Blue Theme - #00225B */
 
 @layer base {
   :root {
@@ -12,14 +13,14 @@
     --background: 0 0% 0%; /* #000000 */
     --foreground: 0 0% 100%; /* #FFFFFF */
 
-    /* AI Theme Colors - Using your primary green */
-    --ai-primary: 150 35% 40%; /* #43946B */
-    --ai-secondary: 150 35% 40%; /* #43946B */
-    --ai-accent: 150 35% 40%; /* #43946B */
-    --ai-glow: 150 35% 40%; /* #43946B */
+    /* AI Theme Colors - Navy Blue Primary #00225B */
+    --ai-primary: 220 100% 18%; /* #00225B */
+    --ai-secondary: 220 100% 18%; /* #00225B */
+    --ai-accent: 220 100% 18%; /* #00225B */
+    --ai-glow: 220 100% 18%; /* #00225B */
 
     /* Semantic Colors */
-    --success: 150 35% 40%; /* #43946B */
+    --success: 220 100% 18%; /* #00225B */
     --warning: 38 92% 50%;
     --error: 0 84% 60%;
 
@@ -31,9 +32,9 @@
     --popover: 150 8% 4%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 150 35% 40%; /* #43946B */
+    --primary: 220 100% 18%; /* #00225B */
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 150 35% 40%;
+    --primary-glow: 220 100% 18%;
 
     --secondary: 150 8% 8%;
     --secondary-foreground: 0 0% 100%;
@@ -41,7 +42,7 @@
     --muted: 150 8% 8%;
     --muted-foreground: 0 0% 70%;
 
-    --accent: 150 35% 40%; /* #43946B */
+    --accent: 220 100% 18%; /* #00225B */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -49,7 +50,7 @@
 
     --border: 150 8% 8%;
     --input: 150 8% 8%;
-    --ring: 150 35% 40%; /* #43946B */
+    --ring: 220 100% 18%; /* #00225B */
 
     /* Gradients */
     --gradient-primary: linear-gradient(
@@ -79,7 +80,7 @@
 
     --sidebar-foreground: 0 0% 100%;
 
-    --sidebar-primary: 150 35% 40%;
+    --sidebar-primary: 220 100% 18%;
 
     --sidebar-primary-foreground: 0 0% 100%;
 
@@ -89,7 +90,7 @@
 
     --sidebar-border: 150 8% 8%;
 
-    --sidebar-ring: 150 35% 40%;
+    --sidebar-ring: 220 100% 18%;
   }
 }
 

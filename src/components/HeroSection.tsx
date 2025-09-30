@@ -18,13 +18,13 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center bg-gradient-hero pt-6 md:pt-8"
+      className="min-h-[75vh] md:min-h-screen flex items-center bg-black pt-0 md:pt-8"
     >
       <div className="container mx-auto px-6">
         <div className="flex flex-col items-center justify-center text-center space-y-8">
           {/* Main Hero Content */}
           <div className="space-y-6 fade-in">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] leading-tight">
+            <h1 className="text-[4rem] md:text-7xl lg:text-[5.5rem] leading-tight">
               <span className="text-white">We are an AI</span>
               <br />
               <span className="text-ai-primary inline-block min-h-[1.2em] drop-shadow-glow italic">
@@ -41,10 +41,6 @@ const HeroSection = () => {
               <br />
               <span className="text-white">Company</span>
             </h1>
-
-            <p className="text-xl sm:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              We are all of the above.
-            </p>
           </div>
 
           {/* CTA Buttons */}

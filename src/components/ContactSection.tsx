@@ -20,6 +20,7 @@ interface FormData {
   name: string;
   email: string;
   phone: string;
+  countryCode: string;
   company: string;
   service: string;
   budget: string;
@@ -42,6 +43,7 @@ const ContactSection = () => {
       name: "",
       email: "",
       phone: "",
+      countryCode: "+1",
       company: "",
       service: "",
       budget: "",
@@ -53,14 +55,25 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
+      // Combine phone and country code
+      const fullPhoneNumber = data.phone ? `${data.countryCode}${data.phone}` : "";
+      
+      // Create form data object with combined phone
+      const formDataWithCombinedPhone = {
+        ...data,
+        phone: fullPhoneNumber,
+        countryCode: undefined // Remove countryCode from final data
+      };
+
       // Create form data string
-      const formDataString = Object.entries(data)
-        .filter(([_, value]) => value && value.trim() !== "")
+      const formDataString = Object.entries(formDataWithCombinedPhone)
+        .filter(([key, value]) => value && value.trim() !== "" && key !== "countryCode")
         .map(
           ([key, value]) =>
             `${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}`
         )
         .join("\n");
+
 
       const response = await fetch(
         "https://send-mail-redirect-boostmysites.vercel.app/send-email",
@@ -213,17 +226,68 @@ const ContactSection = () => {
                   <Label htmlFor="phone" className="text-sm font-medium">
                     Phone Number
                   </Label>
-                  <Input
-                    id="phone"
-                    {...register("phone", {
-                      pattern: {
-                        value: /^[+]?[1-9][\d]{0,15}$/,
-                        message: "Invalid phone number",
-                      },
-                    })}
-                    placeholder="+1 (555) 000-0000"
-                    className="min-h-[48px]"
-                  />
+                  <div className="flex gap-2">
+                    <Select
+                      value={watch("countryCode") || "+1"}
+                      onValueChange={(value) => setValue("countryCode", value)}
+                    >
+                      <SelectTrigger className="w-24 min-h-[48px]">
+                        <SelectValue />
+                      </SelectTrigger>
+                       <SelectContent>
+                         <SelectItem value="+1">🇺🇸 +1</SelectItem>
+                         <SelectItem value="+91">🇮🇳 +91</SelectItem>
+                         <SelectItem value="+44">🇬🇧 +44</SelectItem>
+                         <SelectItem value="+33">🇫🇷 +33</SelectItem>
+                         <SelectItem value="+49">🇩🇪 +49</SelectItem>
+                         <SelectItem value="+81">🇯🇵 +81</SelectItem>
+                         <SelectItem value="+86">🇨🇳 +86</SelectItem>
+                         <SelectItem value="+61">🇦🇺 +61</SelectItem>
+                         <SelectItem value="+55">🇧🇷 +55</SelectItem>
+                         <SelectItem value="+39">🇮🇹 +39</SelectItem>
+                         <SelectItem value="+34">🇪🇸 +34</SelectItem>
+                         <SelectItem value="+31">🇳🇱 +31</SelectItem>
+                         <SelectItem value="+46">🇸🇪 +46</SelectItem>
+                         <SelectItem value="+47">🇳🇴 +47</SelectItem>
+                         <SelectItem value="+45">🇩🇰 +45</SelectItem>
+                         <SelectItem value="+41">🇨🇭 +41</SelectItem>
+                         <SelectItem value="+43">🇦🇹 +43</SelectItem>
+                         <SelectItem value="+32">🇧🇪 +32</SelectItem>
+                         <SelectItem value="+351">🇵🇹 +351</SelectItem>
+                         <SelectItem value="+30">🇬🇷 +30</SelectItem>
+                         <SelectItem value="+48">🇵🇱 +48</SelectItem>
+                         <SelectItem value="+420">🇨🇿 +420</SelectItem>
+                         <SelectItem value="+421">🇸🇰 +421</SelectItem>
+                         <SelectItem value="+36">🇭🇺 +36</SelectItem>
+                         <SelectItem value="+40">🇷🇴 +40</SelectItem>
+                         <SelectItem value="+359">🇧🇬 +359</SelectItem>
+                         <SelectItem value="+385">🇭🇷 +385</SelectItem>
+                         <SelectItem value="+386">🇸🇮 +386</SelectItem>
+                         <SelectItem value="+372">🇪🇪 +372</SelectItem>
+                         <SelectItem value="+371">🇱🇻 +371</SelectItem>
+                         <SelectItem value="+370">🇱🇹 +370</SelectItem>
+                         <SelectItem value="+358">🇫🇮 +358</SelectItem>
+                         <SelectItem value="+353">🇮🇪 +353</SelectItem>
+                         <SelectItem value="+352">🇱🇺 +352</SelectItem>
+                         <SelectItem value="+356">🇲🇹 +356</SelectItem>
+                         <SelectItem value="+357">🇨🇾 +357</SelectItem>
+                         <SelectItem value="+7">🇷🇺 +7</SelectItem>
+                         <SelectItem value="+380">🇺🇦 +380</SelectItem>
+                         <SelectItem value="+375">🇧🇾 +375</SelectItem>
+                       </SelectContent>
+                    </Select>
+                    <Input
+                      id="phone"
+                      {...register("phone", {
+                        pattern: {
+                          value: /^[+]?[1-9][\d]{0,15}$/,
+                          message: "Invalid phone number",
+                        },
+                      })}
+                      placeholder="(555) 000-0000"
+                      className="min-h-[48px] flex-1"
+                    />
+                  </div>
                   {errors.phone && (
                     <p className="text-red-500 text-sm mt-1">
                       {errors.phone.message}

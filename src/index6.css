@@ -5,6 +5,7 @@
 @tailwind utilities;
 
 /* Growonsmedia Design System - AI-Driven, Futuristic, Professional */
+/* Variant 6: Magenta Theme - #8E03FE */
 
 @layer base {
   :root {
@@ -12,14 +13,14 @@
     --background: 0 0% 0%; /* #000000 */
     --foreground: 0 0% 100%; /* #FFFFFF */
 
-    /* AI Theme Colors - Using your primary green */
-    --ai-primary: 150 35% 40%; /* #43946B */
-    --ai-secondary: 150 35% 40%; /* #43946B */
-    --ai-accent: 150 35% 40%; /* #43946B */
-    --ai-glow: 150 35% 40%; /* #43946B */
+    /* AI Theme Colors - Magenta Primary #8E03FE */
+    --ai-primary: 270 98% 50%; /* #8E03FE */
+    --ai-secondary: 270 98% 50%; /* #8E03FE */
+    --ai-accent: 270 98% 50%; /* #8E03FE */
+    --ai-glow: 270 98% 50%; /* #8E03FE */
 
     /* Semantic Colors */
-    --success: 150 35% 40%; /* #43946B */
+    --success: 270 98% 50%; /* #8E03FE */
     --warning: 38 92% 50%;
     --error: 0 84% 60%;
 
@@ -31,9 +32,9 @@
     --popover: 150 8% 4%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 150 35% 40%; /* #43946B */
+    --primary: 270 98% 50%; /* #8E03FE */
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 150 35% 40%;
+    --primary-glow: 270 98% 50%;
 
     --secondary: 150 8% 8%;
     --secondary-foreground: 0 0% 100%;
@@ -41,7 +42,7 @@
     --muted: 150 8% 8%;
     --muted-foreground: 0 0% 70%;
 
-    --accent: 150 35% 40%; /* #43946B */
+    --accent: 270 98% 50%; /* #8E03FE */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -49,7 +50,7 @@
 
     --border: 150 8% 8%;
     --input: 150 8% 8%;
-    --ring: 150 35% 40%; /* #43946B */
+    --ring: 270 98% 50%; /* #8E03FE */
 
     /* Gradients */
     --gradient-primary: linear-gradient(
@@ -79,7 +80,7 @@
 
     --sidebar-foreground: 0 0% 100%;
 
-    --sidebar-primary: 150 35% 40%;
+    --sidebar-primary: 270 98% 50%;
 
     --sidebar-primary-foreground: 0 0% 100%;
 
@@ -89,7 +90,7 @@
 
     --sidebar-border: 150 8% 8%;
 
-    --sidebar-ring: 150 35% 40%;
+    --sidebar-ring: 270 98% 50%;
   }
 }
 

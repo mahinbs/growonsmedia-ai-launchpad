@@ -1,5 +1,6 @@
 import { openWhatsApp, getFormattedWhatsAppNumber } from "@/lib/whatsapp";
 import { CONTACT_INFO } from "@/config/contact";
+import { scroller } from "react-scroll";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -24,7 +25,15 @@ const Footer = () => {
               </button>
             </div>
             <div className="mt-6 space-y-3">
-              <button className="flex items-center space-x-2 text-white hover:text-ai-primary transition-colors text-sm border border-white/20 rounded-lg px-4 py-2 hover:border-ai-primary">
+              <button 
+                onClick={() => scroller.scrollTo('contact', {
+                  duration: 1000,
+                  delay: 0,
+                  smooth: "easeInOutQuart",
+                  offset: -80
+                })}
+                className="flex items-center space-x-2 text-white hover:text-ai-primary transition-colors text-sm border border-white/20 rounded-lg px-4 py-2 hover:border-ai-primary"
+              >
                 <span>Get In Touch</span>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
@@ -39,6 +48,21 @@ const Footer = () => {
               <p className="text-muted-foreground text-sm">
                 © {currentYear} Growonsmedia. All rights reserved.
               </p>
+              <div className="flex justify-center space-x-4 mt-2">
+                <a 
+                  href="/privacy-policy" 
+                  className="text-muted-foreground hover:text-ai-primary transition-colors text-xs"
+                >
+                  Privacy Policy
+                </a>
+                <span className="text-muted-foreground text-xs">•</span>
+                <a 
+                  href="/terms-conditions" 
+                  className="text-muted-foreground hover:text-ai-primary transition-colors text-xs"
+                >
+                  Terms & Conditions
+                </a>
+              </div>
             </div>
           </div>
 

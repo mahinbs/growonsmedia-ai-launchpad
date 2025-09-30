@@ -33,7 +33,7 @@ const TrustSection = () => {
   const finalValues = {
     clients: 150,
     projects: 500,
-    years: 5,
+    years: 4,
   };
 
   // Intersection Observer for counter animation
@@ -62,54 +62,40 @@ const TrustSection = () => {
     const steps = 60;
     const stepDuration = duration / steps;
 
+    const animateCounter = (key: keyof typeof finalValues) => {
+      let currentStep = 0;
+      const interval = setInterval(() => {
+        currentStep++;
+        const progress = currentStep / steps;
+        const newValue = Math.floor(finalValues[key] * progress);
+        
+        setCounters((prev) => ({
+          ...prev,
+          [key]: newValue
+        }));
+
+        if (currentStep >= steps) {
+          clearInterval(interval);
+          setCounters((prev) => ({
+            ...prev,
+            [key]: finalValues[key]
+          }));
+        }
+      }, stepDuration);
+
+      return interval;
+    };
+
     const intervals = {
-      clients: setInterval(() => {
-        setCounters((prev) => {
-          const increment = finalValues.clients / steps;
-          const newValue = Math.min(
-            prev.clients + increment,
-            finalValues.clients
-          );
-          if (newValue >= finalValues.clients) {
-            clearInterval(intervals.clients);
-            return { ...prev, clients: finalValues.clients };
-          }
-          return { ...prev, clients: Math.floor(newValue) };
-        });
-      }, stepDuration),
-
-      projects: setInterval(() => {
-        setCounters((prev) => {
-          const increment = finalValues.projects / steps;
-          const newValue = Math.min(
-            prev.projects + increment,
-            finalValues.projects
-          );
-          if (newValue >= finalValues.projects) {
-            clearInterval(intervals.projects);
-            return { ...prev, projects: finalValues.projects };
-          }
-          return { ...prev, projects: Math.floor(newValue) };
-        });
-      }, stepDuration),
-
-      years: setInterval(() => {
-        setCounters((prev) => {
-          const increment = finalValues.years / steps;
-          const newValue = Math.min(prev.years + increment, finalValues.years);
-          if (newValue >= finalValues.years) {
-            clearInterval(intervals.years);
-            return { ...prev, years: finalValues.years };
-          }
-          return { ...prev, years: Math.floor(newValue) };
-        });
-      }, stepDuration),
+      clients: animateCounter('clients'),
+      projects: animateCounter('projects'),
+      years: animateCounter('years'),
     };
 
     return () => {
       Object.values(intervals).forEach(clearInterval);
     };
-  }, [isVisible, finalValues.clients, finalValues.projects, finalValues.years]);
+  }, [isVisible]);
 
   const clientLogos = [
     { name: "Brand 1", image: brand1 },

@@ -8,7 +8,7 @@ export const CONTACT_INFO = {
   // Office addresses
   offices: {
     india: {
-      address: "995/208-A, 2-G, Gali No.12, Kailash Nagar, Gandhi Nagar, Delhi 110031, India"
+      address: "995/208-A, 2-G, Street No.12, Kailash Nagar, Gandhi Nagar, Delhi 110031, India"
     },
     usa: {
       address: "271 W Short St, Suite 410, Lexington, Kentucky (KY)-40507, USA"

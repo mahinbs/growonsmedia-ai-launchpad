@@ -23,6 +23,7 @@ const ContactForm = ({
     name: "",
     email: "",
     phone: "",
+    countryCode: "+1",
     company: "",
     service: defaultService || "",
     budget: "",
@@ -52,6 +53,18 @@ const ContactForm = ({
     setIsSubmitting(true);
 
     try {
+      // Combine phone and country code
+      const fullPhoneNumber = formData.phone ? `${formData.countryCode}${formData.phone}` : "";
+      
+      // Create form data object with combined phone
+      const formDataWithCombinedPhone = {
+        ...formData,
+        phone: fullPhoneNumber,
+        countryCode: undefined // Remove countryCode from final data
+      };
+
+      console.log("ContactForm data:", formDataWithCombinedPhone);
+
       // Simulate form submission
       await new Promise(resolve => setTimeout(resolve, 1000));
       
@@ -65,6 +78,7 @@ const ContactForm = ({
         name: "",
         email: "",
         phone: "",
+        countryCode: "+1",
         company: "",
         service: defaultService || "",
         budget: "",
@@ -187,15 +201,66 @@ const ContactForm = ({
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="phone">Phone Number</Label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      placeholder="+1 (555) 123-4567"
-                      className="min-h-[48px]"
-                    />
+                    <div className="flex gap-2">
+                      <Select 
+                        value={formData.countryCode || "+1"} 
+                        onValueChange={(value) => handleSelectChange("countryCode", value)}
+                      >
+                        <SelectTrigger className="w-24 min-h-[48px]">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="+1">🇺🇸 +1</SelectItem>
+                          <SelectItem value="+91">🇮🇳 +91</SelectItem>
+                          <SelectItem value="+44">🇬🇧 +44</SelectItem>
+                          <SelectItem value="+33">🇫🇷 +33</SelectItem>
+                          <SelectItem value="+49">🇩🇪 +49</SelectItem>
+                          <SelectItem value="+81">🇯🇵 +81</SelectItem>
+                          <SelectItem value="+86">🇨🇳 +86</SelectItem>
+                          <SelectItem value="+61">🇦🇺 +61</SelectItem>
+                          <SelectItem value="+55">🇧🇷 +55</SelectItem>
+                          <SelectItem value="+39">🇮🇹 +39</SelectItem>
+                          <SelectItem value="+34">🇪🇸 +34</SelectItem>
+                          <SelectItem value="+31">🇳🇱 +31</SelectItem>
+                          <SelectItem value="+46">🇸🇪 +46</SelectItem>
+                          <SelectItem value="+47">🇳🇴 +47</SelectItem>
+                          <SelectItem value="+45">🇩🇰 +45</SelectItem>
+                          <SelectItem value="+41">🇨🇭 +41</SelectItem>
+                          <SelectItem value="+43">🇦🇹 +43</SelectItem>
+                          <SelectItem value="+32">🇧🇪 +32</SelectItem>
+                          <SelectItem value="+351">🇵🇹 +351</SelectItem>
+                          <SelectItem value="+30">🇬🇷 +30</SelectItem>
+                          <SelectItem value="+48">🇵🇱 +48</SelectItem>
+                          <SelectItem value="+420">🇨🇿 +420</SelectItem>
+                          <SelectItem value="+421">🇸🇰 +421</SelectItem>
+                          <SelectItem value="+36">🇭🇺 +36</SelectItem>
+                          <SelectItem value="+40">🇷🇴 +40</SelectItem>
+                          <SelectItem value="+359">🇧🇬 +359</SelectItem>
+                          <SelectItem value="+385">🇭🇷 +385</SelectItem>
+                          <SelectItem value="+386">🇸🇮 +386</SelectItem>
+                          <SelectItem value="+372">🇪🇪 +372</SelectItem>
+                          <SelectItem value="+371">🇱🇻 +371</SelectItem>
+                          <SelectItem value="+370">🇱🇹 +370</SelectItem>
+                          <SelectItem value="+358">🇫🇮 +358</SelectItem>
+                          <SelectItem value="+353">🇮🇪 +353</SelectItem>
+                          <SelectItem value="+352">🇱🇺 +352</SelectItem>
+                          <SelectItem value="+356">🇲🇹 +356</SelectItem>
+                          <SelectItem value="+357">🇨🇾 +357</SelectItem>
+                          <SelectItem value="+7">🇷🇺 +7</SelectItem>
+                          <SelectItem value="+380">🇺🇦 +380</SelectItem>
+                          <SelectItem value="+375">🇧🇾 +375</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <Input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        placeholder="(555) 123-4567"
+                        className="min-h-[48px] flex-1"
+                      />
+                    </div>
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="company">Company</Label>
