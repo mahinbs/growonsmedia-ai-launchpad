@@ -347,4 +347,14 @@
       @apply min-w-[44px] min-h-[44px] flex items-center justify-center;
     }
   }
+
+  /* Card flip animations */
+  .flip-card {
+    transition: transform 0.7s ease-in-out;
+    transform-style: preserve-3d;
+  }
+
+  .flip-card:hover {
+    transform: rotateY(180deg);
+  }
 }

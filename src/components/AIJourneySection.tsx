@@ -132,41 +132,62 @@ const AIJourneySection = () => {
         <div className="grid lg:grid-cols-[30%,1fr] gap-16 items-center min-h-[80vh]">
           {/* Left Side - Step Navigation */}
           <div className="space-y-8">
-            {/* Mobile Dropdown */}
-            <div className="lg:hidden">
-              <Select
-                value={activeStep.toString()}
-                onValueChange={(value) => setActiveStep(parseInt(value))}
-              >
-                <SelectTrigger className="w-full bg-card/50 border border-border/50 hover:bg-card/80 text-left h-13">
-                  <SelectValue>
-                    <div className="flex items-center space-x-4">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-primary text-white flex items-center justify-center text-lg font-bold">
-                        {steps[activeStep].letter}
+            {/* Mobile Cards */}
+            <div className="lg:hidden space-y-6">
+              {steps.map((step, index) => (
+                <div
+                  key={index}
+                  className="relative w-full h-40 cursor-pointer"
+                  style={{ perspective: '1000px' }}
+                >
+                  <div 
+                    className="flip-card relative w-full h-full"
+                  >
+                    {/* Front of card - Letter, Title, Description */}
+                    <div 
+                      className="absolute inset-0 w-full h-full bg-card/50 border border-border/50 rounded-2xl p-6 flex items-center space-x-4"
+                      style={{ backfaceVisibility: 'hidden' }}
+                    >
+                      <div className="flex-1 flex flex-col items-center">
+                      <div className="w-16 h-16 rounded-xl bg-gradient-primary text-white flex items-center justify-center text-2xl font-bold flex-shrink-0 shadow-lg mb-2">
+                        {step.letter}
                       </div>
-                      <div>
-                        <div className="text-lg font-semibold">
-                          {steps[activeStep].title}
-                        </div>
+                        <h3 className="text-xl font-bold gradient-text mb-2">
+                          {step.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {step.description}
+                        </p>
                       </div>
                     </div>
-                  </SelectValue>
-                </SelectTrigger>
-                <SelectContent>
-                  {steps.map((step, index) => (
-                    <SelectItem key={index} value={index.toString()}>
-                      <div className="flex items-center space-x-4 py-2">
-                        <div className="w-10 h-10 rounded-lg bg-gradient-primary text-white flex items-center justify-center text-sm font-bold">
-                          {step.letter}
+                    
+                    {/* Back of card - Image, Title, Details */}
+                    <div 
+                      className="absolute inset-0 w-full h-full bg-card border border-border/50 rounded-2xl p-6 flex flex-col items-center justify-center text-center"
+                      style={{ 
+                        backfaceVisibility: 'hidden',
+                        transform: 'rotateY(180deg)'
+                      }}
+                    >
+                      <div className="mb-4">
+                        <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-ai-primary/20 to-ai-secondary/20 flex items-center justify-center shadow-lg mx-auto mb-3">
+                          <img
+                            src={step.image}
+                            alt={step.title}
+                            className="w-16 h-16 rounded object-contain"
+                          />
                         </div>
-                        <div>
-                          <div className="font-semibold">{step.title}</div>
-                        </div>
+                        <h3 className="text-lg font-bold gradient-text">
+                          {step.title}
+                        </h3>
                       </div>
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {step.details}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
 
             {/* Desktop Step Navigation */}
@@ -219,8 +240,8 @@ const AIJourneySection = () => {
             </div>
           </div>
 
-          {/* Right Side - Content Display */}
-          <div className="relative">
+          {/* Right Side - Content Display (Desktop Only) */}
+          <div className="relative hidden lg:block">
             <motion.div
               key={activeStep}
               initial={{ opacity: 0, y: 30, scale: 0.95 }}

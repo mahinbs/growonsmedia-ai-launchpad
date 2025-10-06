@@ -20,6 +20,8 @@ import brand7 from "../assets/brandlogos/7.png";
 import brand8 from "../assets/brandlogos/8.png";
 import brand9 from "../assets/brandlogos/9.png";
 import brand10 from "../assets/brandlogos/10.png";
+import pulkitGuptaPhoto from "../assets/pulkitgupta.jpg";
+import pulkitJainPhoto from "../assets/pulkitjain.jpeg";
 
 const TrustSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -29,12 +31,6 @@ const TrustSection = () => {
     years: 0,
   });
   const countersRef = useRef<HTMLDivElement>(null);
-
-  const finalValues = {
-    clients: 150,
-    projects: 500,
-    years: 4,
-  };
 
   // Intersection Observer for counter animation
   useEffect(() => {
@@ -57,6 +53,12 @@ const TrustSection = () => {
   // Counter animation
   useEffect(() => {
     if (!isVisible) return;
+
+    const finalValues = {
+      clients: 150,
+      projects: 500,
+      years: 4,
+    };
 
     const duration = 2000; // 2 seconds
     const steps = 60;
@@ -203,16 +205,18 @@ const TrustSection = () => {
         {/* Founder Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-12 sm:mb-16 px-4">
           <div className="service-card text-center">
-            <div className="w-24 h-24 sm:w-32 sm:h-32 bg-ai-glow rounded-full mx-auto mb-4 sm:mb-6 flex items-center justify-center">
-              <span className="text-xl sm:text-2xl font-bold text-ai-primary">
-                CEO
-              </span>
+            <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 sm:mb-6 overflow-hidden border-2 border-ai-primary/30">
+              <img
+                src={pulkitGuptaPhoto}
+                alt="Pulkit Gupta - Co-founder & CEO"
+                className="w-full h-full object-cover"
+              />
             </div>
             <h3 className="text-xl sm:text-2xl font-bold mb-2">
-              Founder & CEO
+              Pulkit Gupta
             </h3>
             <p className="text-ai-primary font-semibold mb-3 sm:mb-4 text-sm sm:text-base">
-              AI Innovation Leader
+              Co-founder & CEO
             </p>
             <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
               Visionary leader with 10+ years in AI and business transformation.
@@ -222,21 +226,23 @@ const TrustSection = () => {
           </div>
 
           <div className="service-card text-center">
-            <div className="w-24 h-24 sm:w-32 sm:h-32 bg-ai-glow rounded-full mx-auto mb-4 sm:mb-6 flex items-center justify-center">
-              <span className="text-xl sm:text-2xl font-bold text-ai-primary">
-                CTO
-              </span>
+            <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 sm:mb-6 overflow-hidden border-2 border-ai-primary/30">
+              <img
+                src={pulkitJainPhoto}
+                alt="Pulkit Jain - Founder & CMO"
+                className="w-full h-full object-cover"
+              />
             </div>
             <h3 className="text-xl sm:text-2xl font-bold mb-2">
-              Co-Founder & CTO
+              Pulkit Jain
             </h3>
             <p className="text-ai-primary font-semibold mb-3 sm:mb-4 text-sm sm:text-base">
-              Technical Excellence
+              Founder & CMO
             </p>
             <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-              Expert developer and architect specializing in AI implementation
-              and scalable solutions. Drives technical innovation and ensures
-              delivery excellence.
+              Strategic marketing leader specializing in AI-driven growth and brand
+              development. Expert in digital transformation and customer engagement
+              through innovative AI solutions.
             </p>
           </div>
         </div>

@@ -249,6 +249,23 @@ const ContactForm = ({
                           <SelectItem value="+7">🇷🇺 +7</SelectItem>
                           <SelectItem value="+380">🇺🇦 +380</SelectItem>
                           <SelectItem value="+375">🇧🇾 +375</SelectItem>
+                          <SelectItem value="+971">🇦🇪 +971</SelectItem>
+                          <SelectItem value="+966">🇸🇦 +966</SelectItem>
+                          <SelectItem value="+20">🇪🇬 +20</SelectItem>
+                          <SelectItem value="+27">🇿🇦 +27</SelectItem>
+                          <SelectItem value="+52">🇲🇽 +52</SelectItem>
+                          <SelectItem value="+54">🇦🇷 +54</SelectItem>
+                          <SelectItem value="+56">🇨🇱 +56</SelectItem>
+                          <SelectItem value="+57">🇨🇴 +57</SelectItem>
+                          <SelectItem value="+51">🇵🇪 +51</SelectItem>
+                          <SelectItem value="+82">🇰🇷 +82</SelectItem>
+                          <SelectItem value="+65">🇸🇬 +65</SelectItem>
+                          <SelectItem value="+60">🇲🇾 +60</SelectItem>
+                          <SelectItem value="+66">🇹🇭 +66</SelectItem>
+                          <SelectItem value="+84">🇻🇳 +84</SelectItem>
+                          <SelectItem value="+63">🇵🇭 +63</SelectItem>
+                          <SelectItem value="+62">🇮🇩 +62</SelectItem>
+                          <SelectItem value="+64">🇳🇿 +64</SelectItem>
                         </SelectContent>
                       </Select>
                       <Input

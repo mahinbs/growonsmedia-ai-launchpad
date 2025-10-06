@@ -77,18 +77,15 @@ const ServicesSection = () => {
                   if (service) setActiveService(service);
                 }}
               >
-                <SelectTrigger className="w-full bg-card/30 border border-white/20 hover:bg-card/50 text-left h-13">
+                <SelectTrigger className="w-full bg-card/30 border border-white/20 hover:bg-card/50 text-left h-13  btn-hero">
                   <SelectValue>
                     <div className="flex items-center space-x-3">
                       <div
                         className="w-10 h-10 rounded-lg flex items-center justify-center"
-                        style={{
-                          backgroundColor: `${activeService.accentColor}20`,
-                        }}
+                        
                       >
                         <activeService.icon
-                          className="w-5 h-5"
-                          style={{ color: activeService.accentColor }}
+                          className="w-5 h-5 text-white"
                         />
                       </div>
                       <div>
