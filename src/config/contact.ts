@@ -1,6 +1,6 @@
 export const CONTACT_INFO = {
   // WhatsApp number (without + symbol)
-  whatsapp: "919625978823",
+  whatsapp: "919990065561",
   
   // Email
   email: "contact@growonsmedia.ai",
