@@ -15,7 +15,9 @@ import developImg from "@/assets/develop-illustration.png";
 const AIJourneySection = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [flippedCards, setFlippedCards] = useState<Set<number>>(new Set());
   const sectionRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const controls = useAnimation();
 
   const steps = [
@@ -59,6 +61,51 @@ const AIJourneySection = () => {
 
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Intersection Observer for mobile card flip on view
+  useEffect(() => {
+    // Reset flipped cards when switching between mobile and desktop
+    if (!isMobile) {
+      setFlippedCards(new Set());
+      return;
+    }
+
+    const observers: IntersectionObserver[] = [];
+
+    cardRefs.current.forEach((cardRef, index) => {
+      if (!cardRef) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Card is in view - flip it
+              setFlippedCards((prev) => new Set(prev).add(index));
+            } else {
+              // Card is out of view - flip back
+              setFlippedCards((prev) => {
+                const newSet = new Set(prev);
+                newSet.delete(index);
+                return newSet;
+              });
+            }
+          });
+        },
+        {
+          threshold: 0.5, // Trigger when 50% of the card is visible
+          rootMargin: '0px',
+        }
+      );
+
+      observer.observe(cardRef);
+      observers.push(observer);
+    });
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+      setFlippedCards(new Set()); // Reset on cleanup
+    };
+  }, [isMobile, steps.length]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -137,11 +184,18 @@ const AIJourneySection = () => {
               {steps.map((step, index) => (
                 <div
                   key={index}
-                  className="relative w-full h-40 cursor-pointer"
+                  ref={(el) => {
+                    cardRefs.current[index] = el;
+                  }}
+                  className="relative w-full h-56"
                   style={{ perspective: '1000px' }}
                 >
                   <div 
-                    className="flip-card relative w-full h-full"
+                    className="flip-card relative w-full h-full transition-transform duration-700 ease-in-out"
+                    style={{
+                      transformStyle: 'preserve-3d',
+                      transform: flippedCards.has(index) ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                    }}
                   >
                     {/* Front of card - Letter, Title, Description */}
                     <div 

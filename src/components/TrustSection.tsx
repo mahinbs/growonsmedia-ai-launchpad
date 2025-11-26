@@ -4,7 +4,6 @@ import {
   FolderOpen,
   Calendar,
   Linkedin,
-  Twitter,
   Instagram,
   Facebook,
 } from "lucide-react";
@@ -70,17 +69,17 @@ const TrustSection = () => {
         currentStep++;
         const progress = currentStep / steps;
         const newValue = Math.floor(finalValues[key] * progress);
-        
+
         setCounters((prev) => ({
           ...prev,
-          [key]: newValue
+          [key]: newValue,
         }));
 
         if (currentStep >= steps) {
           clearInterval(interval);
           setCounters((prev) => ({
             ...prev,
-            [key]: finalValues[key]
+            [key]: finalValues[key],
           }));
         }
       }, stepDuration);
@@ -89,9 +88,9 @@ const TrustSection = () => {
     };
 
     const intervals = {
-      clients: animateCounter('clients'),
-      projects: animateCounter('projects'),
-      years: animateCounter('years'),
+      clients: animateCounter("clients"),
+      projects: animateCounter("projects"),
+      years: animateCounter("years"),
     };
 
     return () => {
@@ -113,10 +112,13 @@ const TrustSection = () => {
   ];
 
   const socialLinks = [
-    { icon: Linkedin, url: "#", name: "LinkedIn" },
-    { icon: Twitter, url: "#", name: "Twitter" },
-    { icon: Instagram, url: "#", name: "Instagram" },
-    { icon: Facebook, url: "#", name: "Facebook" },
+    {
+      icon: Linkedin,
+      url: "https://www.linkedin.com/company/growonsmedia-ai/",
+      name: "LinkedIn",
+    },
+    { icon: Instagram, url: "https://www.instagram.com/growonsmedia.ai/", name: "Instagram" },
+    { icon: Facebook, url: "https://www.facebook.com/profile.php?id=61581731460077", name: "Facebook" },
   ];
 
   return (
@@ -212,9 +214,7 @@ const TrustSection = () => {
                 className="w-full h-full object-cover"
               />
             </div>
-            <h3 className="text-xl sm:text-2xl font-bold mb-2">
-              Pulkit Gupta
-            </h3>
+            <h3 className="text-xl sm:text-2xl font-bold mb-2">Pulkit Gupta</h3>
             <p className="text-ai-primary font-semibold mb-3 sm:mb-4 text-sm sm:text-base">
               Co-founder & CEO
             </p>
@@ -233,16 +233,14 @@ const TrustSection = () => {
                 className="w-full h-full object-cover"
               />
             </div>
-            <h3 className="text-xl sm:text-2xl font-bold mb-2">
-              Pulkit Jain
-            </h3>
+            <h3 className="text-xl sm:text-2xl font-bold mb-2">Pulkit Jain</h3>
             <p className="text-ai-primary font-semibold mb-3 sm:mb-4 text-sm sm:text-base">
               Founder & CMO
             </p>
             <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-              Strategic marketing leader specializing in AI-driven growth and brand
-              development. Expert in digital transformation and customer engagement
-              through innovative AI solutions.
+              Strategic marketing leader specializing in AI-driven growth and
+              brand development. Expert in digital transformation and customer
+              engagement through innovative AI solutions.
             </p>
           </div>
         </div>
@@ -257,6 +255,7 @@ const TrustSection = () => {
               <a
                 key={index}
                 href={social.url}
+                target="_blank"
                 className="w-12 h-12 sm:w-16 sm:h-16 bg-ai-glow rounded-full flex items-center justify-center hover:bg-ai-primary hover:text-white transition-all duration-300 hover:scale-110 touch-manipulation"
                 aria-label={social.name}
               >

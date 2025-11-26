@@ -13,6 +13,7 @@ import WebDevelopment from "./pages/WebDevelopment";
 import AppDevelopment from "./pages/AppDevelopment";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsConditions from "./pages/TermsConditions";
+import ThankYou from "./pages/ThankYou";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<RootLayout />}>
             <Route index element={<Home />} />
+            <Route path="thank-you" element={<ThankYou />} />
             {/* <Route path="ai-journey" element={<AIJourney />} />
             <Route path="services" element={<Services />} />
             <Route path="about" element={<About />} />

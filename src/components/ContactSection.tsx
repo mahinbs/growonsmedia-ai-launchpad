@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -29,6 +30,7 @@ interface FormData {
 
 const ContactSection = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {
@@ -92,11 +94,9 @@ const ContactSection = () => {
       );
 
       if (response.ok) {
-        toast({
-          title: "Message Sent Successfully!",
-          description: "We'll get back to you within 24 hours.",
-        });
         reset();
+        // Redirect to thank you page
+        navigate("/thank-you");
       } else {
         throw new Error("Failed to send message");
       }
